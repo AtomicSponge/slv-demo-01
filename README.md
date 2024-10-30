@@ -1,7 +1,7 @@
 ### Simple demo game using WTEngine.
 
 Requires the following libraries to build:
-- [WTEngine](https://github.com/wtfsystems/wtengine)
+- [WTEngine](https://github.com/AtomicSponge/wtengine)
 - [Allegro](https://github.com/liballeg/allegro5)
 
 ---
