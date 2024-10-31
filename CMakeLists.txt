@@ -19,10 +19,9 @@ project(wte_demo VERSION 1.0 DESCRIPTION "WTEngine Demo Game")
 enable_language(CXX)
 
 #  If a build type is not set, set it to Release
-#if(NOT CMAKE_BUILD_TYPE)
-  #set(CMAKE_BUILD_TYPE Release)
-#endif()
-set(CMAKE_BUILD_TYPE Release)
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
 
 #  Set compiler flags
 set(CMAKE_CXX_FLAGS "-Wall")
