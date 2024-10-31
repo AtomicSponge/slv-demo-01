@@ -197,14 +197,14 @@ int main(int argc, char **argv) {
     /* ********************************* */
     /* *** Game variables ************** */
     /* ********************************* */
-    wte::mgr::variables::reg<int>("score", 0);
-    wte::mgr::variables::reg<int>("hiscore", 0);
-    wte::mgr::variables::reg<int>("max_lives", 3);
-    wte::mgr::variables::reg<int>("lives", 3);
+    wte::mgr::variables::reg<int64_t>("score", 0);
+    wte::mgr::variables::reg<int64_t>("hiscore", 0);
+    wte::mgr::variables::reg<int64_t>("max_lives", 3);
+    wte::mgr::variables::reg<int64_t>("lives", 3);
 
     wte::mgr::variables::set_data_file("game.cfg");
-    wte::mgr::variables::load<int>("max_lives");
-    wte::mgr::variables::load<int>("hiscore");
+    wte::mgr::variables::load<int64_t>("max_lives");
+    wte::mgr::variables::load<int64_t>("hiscore");
 
 
     /* ********************************* */
@@ -313,9 +313,9 @@ int main(int argc, char **argv) {
                     wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->set_drawing();
                     al_clear_to_color(al_map_rgba(0,0,0,0));
                     wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text("Score:  ", al_map_rgb(255,255,255), 110, 0, ALLEGRO_ALIGN_RIGHT);
-                    wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text(std::to_string(wte::mgr::variables::get<int>("score")), al_map_rgb(255,255,255), 110, 0, ALLEGRO_ALIGN_LEFT);
+                    wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text(std::to_string(wte::mgr::variables::get<int64_t>("score")), al_map_rgb(255,255,255), 110, 0, ALLEGRO_ALIGN_LEFT);
                     wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text("High Score:  ", al_map_rgb(255,255,255), 110, 10, ALLEGRO_ALIGN_RIGHT);
-                    wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text(std::to_string(wte::mgr::variables::get<int>("hiscore")), al_map_rgb(255,255,255), 110, 10, ALLEGRO_ALIGN_LEFT);
+                    wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text(std::to_string(wte::mgr::variables::get<int64_t>("hiscore")), al_map_rgb(255,255,255), 110, 10, ALLEGRO_ALIGN_LEFT);
                 }
             );  //  End score overlay drawing.
         }
@@ -338,7 +338,7 @@ int main(int argc, char **argv) {
                     al_clear_to_color(al_map_rgba(0,0,0,0));
                     al_draw_filled_rectangle((float)(120 - wte::mgr::world::get_component<energy>(shd_id)->amt), 0, 120, 10, al_map_rgb(255,255,0));
                     wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text("Shield", al_map_rgb(255,255,255), 200, 0, ALLEGRO_ALIGN_RIGHT);
-                    wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text("Lives:  " + std::to_string(wte::mgr::variables::get<int>("lives")), al_map_rgb(255,255,255), 200, 10, ALLEGRO_ALIGN_RIGHT);
+                    wte::mgr::world::set_component<wte::cmp::gfx::overlay>(ovr_id)->draw_text("Lives:  " + std::to_string(wte::mgr::variables::get<int64_t>("lives")), al_map_rgb(255,255,255), 200, 10, ALLEGRO_ALIGN_RIGHT);
                 }
             );  //  End info overlay drawing.
         }
@@ -416,11 +416,11 @@ int main(int argc, char **argv) {
                         wte::mgr::world::set_component<wte::cmp::hitbox>(plr_id)->solid = false;
 
                         wte::mgr::audio::sample::play(wte::mgr::assets::get<ALLEGRO_SAMPLE>("megumin"), "once");
-                        wte::mgr::variables::set<int>("lives", wte::mgr::variables::get<int>("lives") - 1);
+                        wte::mgr::variables::set<int64_t>("lives", wte::mgr::variables::get<int64_t>("lives") - 1);
                         wte::mgr::world::set_component<wte::cmp::motion>(plr_id)->x_vel = 0.0f;
                         wte::mgr::world::set_component<wte::cmp::motion>(plr_id)->y_vel = 0.0f;
                         wte::mgr::world::set_component<wte::cmp::gfx::sprite>(plr_id)->set_cycle("death");
-                        if(wte::mgr::variables::get<int>("lives") == 0) {
+                        if(wte::mgr::variables::get<int64_t>("lives") == 0) {
                             //  Game over!
                             wte::mgr::messages::add(wte::message(wte::engine_time::check() + 180, "system", "end-game", ""));
                             wte::entity_id go_id = wte::mgr::world::get_id("game_over_overlay");
@@ -612,7 +612,7 @@ int main(int argc, char **argv) {
                         wte::mgr::audio::sample::play(wte::mgr::assets::get<ALLEGRO_SAMPLE>("megumin"), "once", 1.0f, ALLEGRO_AUDIO_PAN_NONE, 1.8f);
 
                         wte::mgr::variables::set("score",
-                            (wte::mgr::variables::get<int>("score") +
+                            (wte::mgr::variables::get<int64_t>("score") +
                             (10 * wte::mgr::world::get_component<size>(ast_id)->the_size)));
 
                         //  If the asteroid was size >= 4, split into two.
@@ -679,16 +679,16 @@ int main(int argc, char **argv) {
         wte::mgr::variables::set("score", 0);
 
         //  Set number of lives.
-        if(wte::mgr::variables::get<int>("max_lives") > 5 || wte::mgr::variables::get<int>("max_lives") < 3)
+        if(wte::mgr::variables::get<int64_t>("max_lives") > 5 || wte::mgr::variables::get<int64_t>("max_lives") < 3)
             wte::mgr::variables::set("max_lives", 3);
-        wte::mgr::variables::set("lives", wte::mgr::variables::get<int>("max_lives"));
+        wte::mgr::variables::set("lives", wte::mgr::variables::get<int64_t>("max_lives"));
 
         wte::mgr::audio::music::a::play(wte::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
     };
 
     wte::engine::end_game = [](){
-        if(wte::mgr::variables::get<int>("score") > wte::mgr::variables::get<int>("hiscore"))
-            wte::mgr::variables::set("hiscore", wte::mgr::variables::get<int>("score"));
+        if(wte::mgr::variables::get<int64_t>("score") > wte::mgr::variables::get<int64_t>("hiscore"))
+            wte::mgr::variables::set("hiscore", wte::mgr::variables::get<int64_t>("score"));
     };
 
     wte::engine::on_engine_pause = [](){
@@ -705,8 +705,8 @@ int main(int argc, char **argv) {
     wte::do_game();
 
     wte::mgr::variables::clear_save();
-    wte::mgr::variables::save<int>("max_lives");
-    wte::mgr::variables::save<int>("hiscore");
+    wte::mgr::variables::save<int64_t>("max_lives");
+    wte::mgr::variables::save<int64_t>("hiscore");
 
     //  Save settings.
     wte::config::save();
