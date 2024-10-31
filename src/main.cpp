@@ -31,14 +31,6 @@ int main(int argc, char **argv) {
     //  Set locations to load game data from.
     wte::engine::add_file_location("data.zip");
 
-    //  Set key bindings
-    wte::config::controls::p1_key_up = ALLEGRO_KEY_W;
-    wte::config::controls::p1_key_down = ALLEGRO_KEY_S;
-    wte::config::controls::p1_key_left = ALLEGRO_KEY_A;
-    wte::config::controls::p1_key_right = ALLEGRO_KEY_D;
-    wte::config::controls::p1_key_action1 = ALLEGRO_KEY_RCTRL;
-    wte::config::controls::p1_key_action2 = ALLEGRO_KEY_ALTGR;
-
     //  Load settings.
     wte::config::load();
 
@@ -56,7 +48,7 @@ int main(int argc, char **argv) {
     });
 
     wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-        if(key == wte::config::controls::p1_key_up) {
+        if(key == ALLEGRO_KEY_W) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             player_pols::y = -1.0f;
             const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -64,7 +56,7 @@ int main(int argc, char **argv) {
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
         }
-        if(key == wte::config::controls::p1_key_down) {
+        if(key == ALLEGRO_KEY_S) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             player_pols::y = 1.0f;
             const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -72,7 +64,7 @@ int main(int argc, char **argv) {
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
         }
-        if(key == wte::config::controls::p1_key_left) {
+        if(key == ALLEGRO_KEY_A) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             player_pols::x = -1.0f;
             const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -80,7 +72,7 @@ int main(int argc, char **argv) {
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
         }
-        if(key == wte::config::controls::p1_key_right) {
+        if(key == ALLEGRO_KEY_D) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             player_pols::x = 1.0f;
             const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -88,7 +80,7 @@ int main(int argc, char **argv) {
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
             wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
         }
-        if(key == wte::config::controls::p1_key_action1) {
+        if(key == ALLEGRO_KEY_RCTRL) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             wte::entity_id can_id = wte::mgr::world::get_id("main_cannon");
             //  Set the cannon's location to match the player.
@@ -105,7 +97,7 @@ int main(int argc, char **argv) {
             //  Play sound effect.
             wte::mgr::audio::sample::play(wte::mgr::assets::get<ALLEGRO_SAMPLE>("laser"), "cannon_fire");
         }
-        if(key == wte::config::controls::p1_key_action2) {
+        if(key == ALLEGRO_KEY_ALTGR) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             wte::entity_id shd_id = wte::mgr::world::get_id("shield");
             //  Set the shield's location to match the player
@@ -125,7 +117,7 @@ int main(int argc, char **argv) {
             }
         }
 
-        if(key == wte::config::controls::key_menu) {
+        if(key == ALLEGRO_KEY_SPACE) {
             if(wte::config::flags::engine_paused) {
                 wte::config::flags::engine_paused = false;
             } else {
@@ -135,7 +127,7 @@ int main(int argc, char **argv) {
     });
 
     wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_UP, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-        if(key == wte::config::controls::p1_key_up) {
+        if(key == ALLEGRO_KEY_W) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             if(player_pols::y < 0.0f) player_pols::y = 0.0f;
             if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
@@ -143,7 +135,7 @@ int main(int argc, char **argv) {
                 wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
             }
         }
-        if(key == wte::config::controls::p1_key_down) {
+        if(key == ALLEGRO_KEY_S) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             if(player_pols::y > 0.0f) player_pols::y = 0.0f;
             if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
@@ -151,7 +143,7 @@ int main(int argc, char **argv) {
                 wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
             }
         }
-        if(key == wte::config::controls::p1_key_left) {
+        if(key == ALLEGRO_KEY_A) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             if(player_pols::x < 0.0f) player_pols::x = 0.0f;
             if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
@@ -159,7 +151,7 @@ int main(int argc, char **argv) {
                 wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
             }
         }
-        if(key == wte::config::controls::p1_key_right) {
+        if(key == ALLEGRO_KEY_D) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             if(player_pols::x > 0.0f) player_pols::x = 0.0f;
             if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
@@ -167,7 +159,7 @@ int main(int argc, char **argv) {
                 wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
             }
         }
-        if(key == wte::config::controls::p1_key_action1) {
+        if(key == ALLEGRO_KEY_RCTRL) {
             //  Turn the cannon off.
             wte::entity_id can_id = wte::mgr::world::get_id("main_cannon");
             wte::mgr::world::set_component<wte::cmp::gfx::sprite>(can_id)->visible = false;
@@ -176,7 +168,7 @@ int main(int argc, char **argv) {
             //  Stop sound effect.
             wte::mgr::audio::sample::stop("cannon_fire");
         }
-        if(key == wte::config::controls::p1_key_action2) {
+        if(key == ALLEGRO_KEY_ALTGR) {
             wte::entity_id player_id = wte::mgr::world::get_id("player");
             wte::entity_id shd_id = wte::mgr::world::get_id("shield");
             //  Disable shield.
