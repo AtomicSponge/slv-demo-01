@@ -676,11 +676,11 @@ int main(int argc, char **argv) {
         wte::mgr::spawner::spawn("shield", {});
 
         //  Reset score.
-        wte::mgr::variables::set("score", 0);
+        wte::mgr::variables::set("score", (int64_t)0);
 
         //  Set number of lives.
         if(wte::mgr::variables::get<int64_t>("max_lives") > 5 || wte::mgr::variables::get<int64_t>("max_lives") < 3)
-            wte::mgr::variables::set("max_lives", 3);
+            wte::mgr::variables::set("max_lives", (int64_t)3);
         wte::mgr::variables::set("lives", wte::mgr::variables::get<int64_t>("max_lives"));
 
         wte::mgr::audio::music::a::play(wte::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
