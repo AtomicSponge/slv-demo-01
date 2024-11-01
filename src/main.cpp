@@ -44,7 +44,9 @@ int main(int argc, char **argv) {
     /* *** Input handling ************** */
     /* ********************************* */
     wte::add_handler<wte::NONGAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-        //wte::mgr::messages::add(wte::message("system", "new-game", "game.sdf"));
+        if(key == ALLEGRO_KEY_SPACE) {
+            //wte::mgr::messages::add(wte::message("system", "new-game", "game.sdf"));
+        }
     });
 
     wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
