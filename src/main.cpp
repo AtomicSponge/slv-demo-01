@@ -44,13 +44,13 @@ int main(int argc, char **argv) {
   /* *** Input handling ************** */
   /* ********************************* */
   wte::add_handler<wte::NONGAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-    if(key == ALLEGRO_KEY_SPACE) {
+    if (key == ALLEGRO_KEY_SPACE) {
       //wte::mgr::messages::add(wte::message("system", "new-game", "game.sdf"));
     }
   });
 
   wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-    if(key == ALLEGRO_KEY_W) {
+    if (key == ALLEGRO_KEY_W) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       player_pols::y = -1.0f;
       const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
     }
-    if(key == ALLEGRO_KEY_S) {
+    if (key == ALLEGRO_KEY_S) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       player_pols::y = 1.0f;
       const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
     }
-    if(key == ALLEGRO_KEY_A) {
+    if (key == ALLEGRO_KEY_A) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       player_pols::x = -1.0f;
       const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -74,7 +74,7 @@ int main(int argc, char **argv) {
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
     }
-    if(key == ALLEGRO_KEY_D) {
+    if (key == ALLEGRO_KEY_D) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       player_pols::x = 1.0f;
       const float rad = std::atan2(player_pols::y, player_pols::x);
@@ -82,7 +82,7 @@ int main(int argc, char **argv) {
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 5.0f;
       wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 5.0f;
     }
-    if(key == ALLEGRO_KEY_RCTRL) {
+    if (key == ALLEGRO_KEY_RCTRL) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       wte::entity_id can_id = wte::mgr::world::get_id("main_cannon");
       //  Set the cannon's location to match the player.
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
       //  Play sound effect.
       wte::mgr::audio::sample::play(wte::mgr::assets::get<ALLEGRO_SAMPLE>("laser"), "cannon_fire");
     }
-    if(key == ALLEGRO_KEY_ALTGR) {
+    if (key == ALLEGRO_KEY_ALTGR) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       wte::entity_id shd_id = wte::mgr::world::get_id("shield");
       //  Set the shield's location to match the player
@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
       wte::mgr::world::set_component<wte::cmp::location>(shd_id)->pos_y =
         wte::mgr::world::get_component<wte::cmp::location>(player_id)->pos_y - 16.0f;
 
-      if(wte::mgr::world::set_component<energy>(shd_id)->amt > 0) {
+      if (wte::mgr::world::set_component<energy>(shd_id)->amt > 0) {
         //  Enable the shield.
         wte::mgr::world::set_component<wte::cmp::gfx::sprite>(shd_id)->visible = true;
         wte::mgr::world::set_component<wte::cmp::ai>(shd_id)->enabled = true;
@@ -119,8 +119,8 @@ int main(int argc, char **argv) {
       }
     }
 
-    if(key == ALLEGRO_KEY_SPACE) {
-      if(wte::config::flags::engine_paused) {
+    if (key == ALLEGRO_KEY_SPACE) {
+      if (wte::config::flags::engine_paused) {
         wte::config::flags::engine_paused = false;
       } else {
         wte::config::flags::engine_paused = true;
@@ -129,39 +129,39 @@ int main(int argc, char **argv) {
   });
 
   wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_UP, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-    if(key == ALLEGRO_KEY_W) {
+    if (key == ALLEGRO_KEY_W) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
-      if(player_pols::y < 0.0f) player_pols::y = 0.0f;
-      if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
+      if (player_pols::y < 0.0f) player_pols::y = 0.0f;
+      if (player_pols::x == 0.0f && player_pols::y == 0.0f) {
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 0.0f;
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
       }
     }
-    if(key == ALLEGRO_KEY_S) {
+    if (key == ALLEGRO_KEY_S) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
-      if(player_pols::y > 0.0f) player_pols::y = 0.0f;
-      if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
+      if (player_pols::y > 0.0f) player_pols::y = 0.0f;
+      if (player_pols::x == 0.0f && player_pols::y == 0.0f) {
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 0.0f;
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
       }
     }
-    if(key == ALLEGRO_KEY_A) {
+    if (key == ALLEGRO_KEY_A) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
-      if(player_pols::x < 0.0f) player_pols::x = 0.0f;
-      if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
+      if (player_pols::x < 0.0f) player_pols::x = 0.0f;
+      if (player_pols::x == 0.0f && player_pols::y == 0.0f) {
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 0.0f;
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
       }
     }
-    if(key == ALLEGRO_KEY_D) {
+    if (key == ALLEGRO_KEY_D) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
-      if(player_pols::x > 0.0f) player_pols::x = 0.0f;
-      if(player_pols::x == 0.0f && player_pols::y == 0.0f) {
+      if (player_pols::x > 0.0f) player_pols::x = 0.0f;
+      if (player_pols::x == 0.0f && player_pols::y == 0.0f) {
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->x_vel = 0.0f;
         wte::mgr::world::set_component<wte::cmp::motion>(player_id)->y_vel = 0.0f;
       }
     }
-    if(key == ALLEGRO_KEY_RCTRL) {
+    if (key == ALLEGRO_KEY_RCTRL) {
       //  Turn the cannon off.
       wte::entity_id can_id = wte::mgr::world::get_id("main_cannon");
       wte::mgr::world::set_component<wte::cmp::gfx::sprite>(can_id)->visible = false;
@@ -170,7 +170,7 @@ int main(int argc, char **argv) {
       //  Stop sound effect.
       wte::mgr::audio::sample::stop("cannon_fire");
     }
-    if(key == ALLEGRO_KEY_ALTGR) {
+    if (key == ALLEGRO_KEY_ALTGR) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       wte::entity_id shd_id = wte::mgr::world::get_id("shield");
       //  Disable shield.
@@ -244,7 +244,7 @@ int main(int argc, char **argv) {
           for(std::size_t i = 0; i < MAX_STARS; i++) {
             wte::mgr::world::set_component<stars>(bkg_id)->y[i] +=
               wte::mgr::world::get_component<stars>(bkg_id)->speed[i] * wte::mgr::world::get_component<stars>(bkg_id)->speed_mult;
-            if(wte::mgr::world::get_component<stars>(bkg_id)->y[i] > wte::config::gfx::viewport_h) {
+            if (wte::mgr::world::get_component<stars>(bkg_id)->y[i] > wte::config::gfx::viewport_h) {
               //  Make a new star.
               wte::mgr::world::set_component<stars>(bkg_id)->x[i] =
                 std::rand() % wte::config::gfx::viewport_w + 1;
@@ -256,14 +256,14 @@ int main(int argc, char **argv) {
 
           //  Draw the stars.
           for(std::size_t i = 0; i < MAX_STARS; i++) {
-            if(wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 1 ||
+            if (wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 1 ||
             wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 4)
               al_draw_pixel(wte::mgr::world::get_component<stars>(bkg_id)->x[i],
                             wte::mgr::world::get_component<stars>(bkg_id)->y[i], al_map_rgb(255,255,255));
-            if(wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 2)
+            if (wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 2)
               al_draw_pixel(wte::mgr::world::get_component<stars>(bkg_id)->x[i],
                             wte::mgr::world::get_component<stars>(bkg_id)->y[i], al_map_rgb(255,255,0));
-            if(wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 3)
+            if (wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 3)
               al_draw_pixel(wte::mgr::world::get_component<stars>(bkg_id)->x[i],
                             wte::mgr::world::get_component<stars>(bkg_id)->y[i], al_map_rgb(255,0,0));
           }
@@ -272,10 +272,10 @@ int main(int argc, char **argv) {
         wte::mgr::world::add_component<wte::cmp::dispatcher>(e_id,
           [](const wte::entity_id& bkg_id, const wte::message& msg) {
             //  Define message processing for the starfield.
-            if(msg.get_cmd() == "default") wte::mgr::world::set_component<stars>(bkg_id)->speed_mult = 1;
-            if(msg.get_cmd() == "up") wte::mgr::world::set_component<stars>(bkg_id)->speed_mult *= 2;
-            if(msg.get_cmd() == "down") wte::mgr::world::set_component<stars>(bkg_id)->speed_mult /= 2;
-            if(msg.get_cmd() == "reset") {
+            if (msg.get_cmd() == "default") wte::mgr::world::set_component<stars>(bkg_id)->speed_mult = 1;
+            if (msg.get_cmd() == "up") wte::mgr::world::set_component<stars>(bkg_id)->speed_mult *= 2;
+            if (msg.get_cmd() == "down") wte::mgr::world::set_component<stars>(bkg_id)->speed_mult /= 2;
+            if (msg.get_cmd() == "reset") {
               wte::mgr::world::set_component<stars>(bkg_id)->speed_mult = 1;
 
               for(std::size_t i = 0; i < MAX_STARS; i++) {
@@ -378,7 +378,7 @@ int main(int argc, char **argv) {
       //  Player logic.
       wte::mgr::world::add_component<wte::cmp::ai>(e_id,
         [](const wte::entity_id& plr_id) {
-          if(wte::mgr::world::get_component<health>(plr_id)->hp <= 0) {  //  Check player health.
+          if (wte::mgr::world::get_component<health>(plr_id)->hp <= 0) {  //  Check player health.
             wte::mgr::world::set_component<wte::cmp::ai>(plr_id)->enabled = false;
             wte::mgr::world::set_component<health>(plr_id)->hp = wte::mgr::world::get_component<health>(plr_id)->hp_max;
             std::string player_name = wte::mgr::world::get_name(plr_id);
@@ -391,7 +391,7 @@ int main(int argc, char **argv) {
       wte::mgr::world::add_component<wte::cmp::dispatcher>(e_id,
         [](const wte::entity_id& plr_id, const wte::message& msg) {
           //  Process player death.
-          if(msg.get_cmd() == "death") {
+          if (msg.get_cmd() == "death") {
             wte::config::flags::input_enabled = false;
             //  Make sure cannon stops firing
             wte::entity_id cannon_id = wte::mgr::world::get_id("main_cannon");
@@ -414,7 +414,7 @@ int main(int argc, char **argv) {
             wte::mgr::world::set_component<wte::cmp::motion>(plr_id)->x_vel = 0.0f;
             wte::mgr::world::set_component<wte::cmp::motion>(plr_id)->y_vel = 0.0f;
             wte::mgr::world::set_component<wte::cmp::gfx::sprite>(plr_id)->set_cycle("death");
-            if(wte::mgr::variables::get<int64_t>("lives") == 0) {
+            if (wte::mgr::variables::get<int64_t>("lives") == 0) {
               //  Game over!
               wte::mgr::messages::add(wte::message(wte::engine_time::check() + 180, "system", "end-game", ""));
               wte::entity_id go_id = wte::mgr::world::get_id("game_over_overlay");
@@ -428,7 +428,7 @@ int main(int argc, char **argv) {
           }
 
           //  Reset player.
-          if(msg.get_cmd() == "reset") {
+          if (msg.get_cmd() == "reset") {
             wte::config::flags::input_enabled = true;
             player_pols::reset();
             wte::mgr::world::set_component<wte::cmp::motion>(plr_id)->x_vel = 0.0f;
@@ -442,7 +442,7 @@ int main(int argc, char **argv) {
           }
 
           //  Take damage.
-          if(msg.get_cmd() == "damage") {
+          if (msg.get_cmd() == "damage") {
             wte::mgr::world::set_component<health>(plr_id)->hp -= std::stoi(msg.get_arg(0));
           }
         }
@@ -483,7 +483,7 @@ int main(int argc, char **argv) {
       //  Cannon message processing.
       wte::mgr::world::add_component<wte::cmp::dispatcher>(e_id,
         [](const wte::entity_id& can_id, const wte::message& msg) {
-          if(msg.get_cmd() == "colision") {
+          if (msg.get_cmd() == "colision") {
             //  Deal damage
             wte::mgr::messages::add(wte::message("entities", msg.get_from(), msg.get_to(),
               "damage", std::to_string(wte::mgr::world::get_component<damage>(can_id)->dmg)));
@@ -522,10 +522,10 @@ int main(int argc, char **argv) {
             wte::mgr::world::get_component<wte::cmp::location>(player_entity)->pos_y - 16.0f;
 
           //  Drain the shield.
-          if(wte::mgr::world::set_component<energy>(shd_id)->amt > 0)
+          if (wte::mgr::world::set_component<energy>(shd_id)->amt > 0)
             wte::mgr::world::set_component<energy>(shd_id)->amt -= 1;
 
-          if(wte::mgr::world::get_component<energy>(shd_id)->amt <= 0) {
+          if (wte::mgr::world::get_component<energy>(shd_id)->amt <= 0) {
             //  Disable shield.
             wte::mgr::world::set_component<wte::cmp::gfx::sprite>(shd_id)->visible = false;
             wte::mgr::world::set_component<wte::cmp::ai>(shd_id)->enabled = false;
@@ -537,7 +537,7 @@ int main(int argc, char **argv) {
         //  Disabeled AI.
         [](const wte::entity_id& shd_id) {
           //  Recharge the shield.
-          if(wte::mgr::world::set_component<energy>(shd_id)->amt < wte::mgr::world::set_component<energy>(shd_id)->amt_max)
+          if (wte::mgr::world::set_component<energy>(shd_id)->amt < wte::mgr::world::set_component<energy>(shd_id)->amt_max)
             wte::mgr::world::set_component<energy>(shd_id)->amt += 1;
         }
       );  //  End shield logic.
@@ -546,7 +546,7 @@ int main(int argc, char **argv) {
       //  Shield message processing.
       wte::mgr::world::add_component<wte::cmp::dispatcher>(e_id,
         [](const wte::entity_id& shd_id, const wte::message& msg) {
-          if(msg.get_cmd() == "colision") {
+          if (msg.get_cmd() == "colision") {
             //  Deal damage
             wte::mgr::messages::add(wte::message("entities", msg.get_from(), msg.get_to(),
               "damage", std::to_string(wte::mgr::world::get_component<damage>(shd_id)->dmg)));
@@ -568,8 +568,8 @@ int main(int argc, char **argv) {
   wte::mgr::spawner::add("asteroid", 5,
     [](const wte::entity_id& e_id, const wte::msg_args& args) {
       int temp_size = std::stoi(args[5]);
-      if(temp_size < 1) temp_size = 1;
-      if(temp_size > 8) temp_size = 8;
+      if (temp_size < 1) temp_size = 1;
+      if (temp_size > 8) temp_size = 8;
 
       wte::mgr::world::set_name(e_id, "asteroid" + std::to_string(e_id));
       wte::mgr::world::add_component<wte::cmp::location>(e_id, std::stof(args[1]), std::stof(args[2]));
@@ -596,12 +596,12 @@ int main(int argc, char **argv) {
         [](const wte::entity_id& ast_id) {
           //  AI for asteroids defined here.
           //  Perform OOB check.
-          if(wte::mgr::world::get_component<wte::cmp::location>(ast_id)->pos_y > (float)(wte::config::gfx::viewport_h + 100)) {
+          if (wte::mgr::world::get_component<wte::cmp::location>(ast_id)->pos_y > (float)(wte::config::gfx::viewport_h + 100)) {
             wte::mgr::messages::add(wte::message("spawner", "delete", wte::mgr::world::get_name(ast_id)));
           }
 
           //  Health check.  If asteroid's HP is <= 0, reward player with points and delete the entity.
-          if(wte::mgr::world::get_component<health>(ast_id)->hp <= 0) {
+          if (wte::mgr::world::get_component<health>(ast_id)->hp <= 0) {
             wte::mgr::messages::add(wte::message("spawner", "delete", wte::mgr::world::get_name(ast_id)));
             wte::mgr::audio::sample::play(wte::mgr::assets::get<ALLEGRO_SAMPLE>("megumin"), "once", 1.0f, ALLEGRO_AUDIO_PAN_NONE, 1.8f);
 
@@ -610,12 +610,12 @@ int main(int argc, char **argv) {
               (10 * wte::mgr::world::get_component<size>(ast_id)->the_size)));
 
             //  If the asteroid was size >= 4, split into two.
-            if(wte::mgr::world::get_component<size>(ast_id)->the_size >= 4) {
+            if (wte::mgr::world::get_component<size>(ast_id)->the_size >= 4) {
               const int new_size = wte::mgr::world::get_component<size>(ast_id)->the_size / 2;
               float dir_a = wte::mgr::world::get_component<wte::cmp::motion>(ast_id)->direction - 90.0f;
-              if(dir_a < 0.0f) dir_a = 0.0f;
+              if (dir_a < 0.0f) dir_a = 0.0f;
               float dir_b = wte::mgr::world::get_component<wte::cmp::motion>(ast_id)->direction + 90.0f;
-              if(dir_b > 360.0f) dir_b = 360.0f;
+              if (dir_b > 360.0f) dir_b = 360.0f;
               const float new_x = wte::mgr::world::get_component<wte::cmp::location>(ast_id)->pos_x;
               const float new_y = wte::mgr::world::get_component<wte::cmp::location>(ast_id)->pos_y;
               const float new_vel = wte::mgr::world::get_component<wte::cmp::motion>(ast_id)->x_vel / 2;
@@ -635,13 +635,13 @@ int main(int argc, char **argv) {
       //  Asteroid message processing.
       wte::mgr::world::add_component<wte::cmp::dispatcher>(e_id,
         [](const wte::entity_id& ast_id, const wte::message& msg) {
-          if(msg.get_cmd() == "colision") {
+          if (msg.get_cmd() == "colision") {
             //  Deal damage
             wte::mgr::messages::add(wte::message("entities", msg.get_from(), msg.get_to(),
               "damage", std::to_string(wte::mgr::world::get_component<damage>(ast_id)->dmg)));
           }
 
-          if(msg.get_cmd() == "damage") {
+          if (msg.get_cmd() == "damage") {
             wte::mgr::world::set_component<health>(ast_id)->hp -= std::stoi(msg.get_arg(0));
           }
         }
@@ -673,7 +673,7 @@ int main(int argc, char **argv) {
     wte::mgr::variables::set("score", (int64_t)0);
 
     //  Set number of lives.
-    if(wte::mgr::variables::get<int64_t>("max_lives") > 5 || wte::mgr::variables::get<int64_t>("max_lives") < 3)
+    if (wte::mgr::variables::get<int64_t>("max_lives") > 5 || wte::mgr::variables::get<int64_t>("max_lives") < 3)
       wte::mgr::variables::set("max_lives", (int64_t)3);
     wte::mgr::variables::set("lives", wte::mgr::variables::get<int64_t>("max_lives"));
 
@@ -681,7 +681,7 @@ int main(int argc, char **argv) {
   };
 
   wte::engine::end_game = [](){
-    if(wte::mgr::variables::get<int64_t>("score") > wte::mgr::variables::get<int64_t>("hiscore"))
+    if (wte::mgr::variables::get<int64_t>("score") > wte::mgr::variables::get<int64_t>("hiscore"))
       wte::mgr::variables::set("hiscore", wte::mgr::variables::get<int64_t>("score"));
   };
 
