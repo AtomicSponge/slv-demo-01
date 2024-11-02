@@ -241,7 +241,7 @@ int main(int argc, char **argv) {
           al_clear_to_color(al_map_rgb(0,0,0));
 
           //  Move the stars.
-          for(std::size_t i = 0; i < MAX_STARS; i++) {
+          for (std::size_t i = 0; i < MAX_STARS; i++) {
             wte::mgr::world::set_component<stars>(bkg_id)->y[i] +=
               wte::mgr::world::get_component<stars>(bkg_id)->speed[i] * wte::mgr::world::get_component<stars>(bkg_id)->speed_mult;
             if (wte::mgr::world::get_component<stars>(bkg_id)->y[i] > wte::config::gfx::viewport_h) {
@@ -255,7 +255,7 @@ int main(int argc, char **argv) {
           }
 
           //  Draw the stars.
-          for(std::size_t i = 0; i < MAX_STARS; i++) {
+          for (std::size_t i = 0; i < MAX_STARS; i++) {
             if (wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 1 ||
             wte::mgr::world::get_component<stars>(bkg_id)->color[i] == 4)
               al_draw_pixel(wte::mgr::world::get_component<stars>(bkg_id)->x[i],
@@ -278,7 +278,7 @@ int main(int argc, char **argv) {
             if (msg.get_cmd() == "reset") {
               wte::mgr::world::set_component<stars>(bkg_id)->speed_mult = 1;
 
-              for(std::size_t i = 0; i < MAX_STARS; i++) {
+              for (std::size_t i = 0; i < MAX_STARS; i++) {
                 wte::mgr::world::set_component<stars>(bkg_id)->x[i] =
                   std::rand() % wte::config::gfx::viewport_w + 1;
                 wte::mgr::world::set_component<stars>(bkg_id)->y[i] =
