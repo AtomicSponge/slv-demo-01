@@ -28,11 +28,17 @@ namespace player_pols {
 }
 
 int main(int argc, char **argv) {
-  //  Set locations to load game data from.
-  wte::engine::add_file_location("data.zip");
-
   //  Load settings.
   wte::config::load();
+
+  /* ********************************* */
+  /* *** Initialize game object ****** */
+  /* ********************************* */
+  wte::engine::initialize(768, 1024);
+
+  PHYSFS_init(argv[0]);
+  PHYSFS_mount("data.zip", NULL, 1);
+  al_set_physfs_file_interface();
 
   //  Set the title screen.
   wte::mgr::gfx::renderer::set_title_screen("title.bmp");
@@ -182,11 +188,6 @@ int main(int argc, char **argv) {
       wte::mgr::audio::sample::stop("shield_sound");
     }
   });
-
-  /* ********************************* */
-  /* *** Initialize game object ****** */
-  /* ********************************* */
-  wte::engine::initialize(768, 1024, argc, argv);
 
   /* ********************************* */
   /* *** Game variables ************** */
@@ -704,6 +705,8 @@ int main(int argc, char **argv) {
 
   //  Save settings.
   wte::config::save();
+
+  PHYSFS_deinit();
 
   wte::engine::de_init();
 
