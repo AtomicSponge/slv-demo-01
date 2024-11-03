@@ -186,7 +186,7 @@ int main(int argc, char **argv) {
   /* ********************************* */
   /* *** Initialize game object ****** */
   /* ********************************* */
-  wte::engine::initialize(argc, argv);
+  wte::engine::initialize(768, 1024, argc, argv);
 
   /* ********************************* */
   /* *** Game variables ************** */
