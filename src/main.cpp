@@ -31,11 +31,10 @@ int main(int argc, char **argv) {
   //  Load settings.
   wte::config::load();
 
-  /* ********************************* */
-  /* *** Initialize game object ****** */
-  /* ********************************* */
+  //  Initialize game object
   wte::engine::initialize(768, 1024);
 
+  //  Load PhysFS
   PHYSFS_init(argv[0]);
   PHYSFS_mount("data.zip", NULL, 1);
   al_set_physfs_file_interface();
