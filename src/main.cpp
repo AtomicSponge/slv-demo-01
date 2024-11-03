@@ -8,6 +8,9 @@
 
 #include <wtengine/wtengine.hpp>
 
+#include <allegro5/allegro_physfs.h>
+#include <physfs.h>
+
 #include <damage.hpp>
 #include <energy.hpp>
 #include <health.hpp>
