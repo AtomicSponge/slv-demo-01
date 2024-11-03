@@ -3,6 +3,7 @@
 Requires the following libraries to build:
 - [WTEngine](https://github.com/AtomicSponge/wtengine)
 - [Allegro](https://github.com/liballeg/allegro5)
+- [PhysFS](https://github.com/icculus/physfs)
 
 *Note:* The demo code has been updated since the last release and had the menus pulled out for now.  But for a working Win demo, check the [releases](https://github.com/AtomicSponge/slv-demo-01/tree/main/releases).
 
