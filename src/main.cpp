@@ -692,7 +692,7 @@ int main(int argc, char **argv) {
 
   PHYSFS_deinit();
 
-  wte::engine::de_init();
+  wte::engine::deinitialize();
 
   return 0; //  Exit program.
 }
