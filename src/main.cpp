@@ -69,9 +69,6 @@ int main(int argc, char **argv) {
   PHYSFS_mount("data.zip", NULL, 1);
   al_set_physfs_file_interface();
 
-  //  Set the size of the play area.
-  wte::mgr::gfx::renderer::set_viewport_size(768, 1024);
-
   /* ********************************* */
   /* *** Input handling ************** */
   /* ********************************* */
