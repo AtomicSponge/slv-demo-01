@@ -18,6 +18,9 @@
 
 class game_scene final : public wte::scene {
   public:
+    game_scene() : wte::scene("game") {};
+    ~game_scene() = default;
+
     void load(void) override {
       //  Spawn starting entities
       wte::mgr::spawner::spawn("starfield", {});
