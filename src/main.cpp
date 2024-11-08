@@ -210,6 +210,7 @@ int main(int argc, char **argv) {
   );
   wte::mgr::assets::load<ALLEGRO_BITMAP>("score_overlay", wte::make_asset<ALLEGRO_BITMAP>(200, 20));
   wte::mgr::assets::load<ALLEGRO_BITMAP>("player_info_overlay", wte::make_asset<ALLEGRO_BITMAP>(200, 20));
+  wte::mgr::assets::load<ALLEGRO_BITMAP>("title_screen", wte::make_asset<ALLEGRO_BITMAP>("title.bmp"));
   wte::mgr::assets::load<ALLEGRO_BITMAP>("game_over_overlay", wte::make_asset<ALLEGRO_BITMAP>("game_over.png"));
   wte::mgr::assets::load<ALLEGRO_BITMAP>("ship", wte::make_asset<ALLEGRO_BITMAP>("ship.png"));
   wte::mgr::assets::load<ALLEGRO_BITMAP>("cannon", wte::make_asset<ALLEGRO_BITMAP>("cannon.png"));
