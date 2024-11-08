@@ -22,5 +22,7 @@ class title_scene final : public wte::scene {
 
     void unload(void) override {};
 
-    void loop(void) override {};
+    void loop(void) override {
+      //
+    };
 };
