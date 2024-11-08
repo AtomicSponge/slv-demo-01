@@ -6,6 +6,8 @@
  * See LICENSE.md for copyright information
  */
 
+#include <ctime>
+
 #include <wtengine/wtengine.hpp>
 
 #include <allegro5/allegro_physfs.h>
@@ -31,6 +33,8 @@ namespace player_pols {
 }
 
 int main(int argc, char **argv) {
+  std::srand(std::time(nullptr));  //  Seed random, using time.
+
   //  Load settings.
   wte::config::load();
 
@@ -50,7 +54,7 @@ int main(int argc, char **argv) {
   /* ********************************* */
   wte::add_handler<wte::NONGAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_SPACE) {
-      //wte::mgr::messages::add(wte::message("system", "new-game", "game.sdf"));
+      //
     }
   });
 
