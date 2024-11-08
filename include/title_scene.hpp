@@ -18,7 +18,7 @@
 
 class title_scene final : public wte::scene {
   public:
-    title_scene() : wte::scene("title") {};
+    title_scene() : wte::scene("title_scene") {};
     ~title_scene() = default;
     
     void load(void) override {};

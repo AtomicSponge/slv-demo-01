@@ -18,7 +18,7 @@
 
 class game_scene final : public wte::scene {
   public:
-    game_scene() : wte::scene("game") {};
+    game_scene() : wte::scene("game_scene") {};
     ~game_scene() = default;
 
     void load(void) override {

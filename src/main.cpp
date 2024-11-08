@@ -681,6 +681,7 @@ int main(int argc, char **argv) {
   /* **************************************************** */
 
   //  Run the game loop.
+  wte::engine::load_scene("game_scene");
   wte::do_game();
 
   wte::mgr::variables::clear_save();
