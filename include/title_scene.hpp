@@ -18,15 +18,9 @@
 
 class title_scene final : public wte::scene {
   public:
-    void load(void) override {
-      //
-    };
+    void load(void) override {};
 
-    void unload(void) override {
-      //
-    };
+    void unload(void) override {};
 
-    void loop(void) override {
-      //
-    };
+    void loop(void) override {};
 };

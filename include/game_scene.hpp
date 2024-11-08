@@ -1,7 +1,7 @@
 /*
  * WTEngine Demo
  * By:  Matthew Evans
- * File:  game_scene.cpp
+ * File:  game_scene.hpp
  *
  * See LICENSE.md for copyright information
  */
@@ -44,7 +44,5 @@ class game_scene final : public wte::scene {
         wte::mgr::variables::set("hiscore", wte::mgr::variables::get<int64_t>("score"));
     };
 
-    void loop(void) override {
-      //
-    };
+    void loop(void) override {};
 };

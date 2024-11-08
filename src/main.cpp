@@ -13,6 +13,9 @@
 #include <allegro5/allegro_physfs.h>
 #include <physfs.h>
 
+#include <title_scene.hpp>
+#include <game_scene.hpp>
+
 #include <damage.hpp>
 #include <energy.hpp>
 #include <health.hpp>
@@ -663,6 +666,9 @@ int main(int argc, char **argv) {
     wte::mgr::systems::add<wte::sys::logic>();
     wte::mgr::systems::add<wte::sys::gfx::animate>();
   };
+
+  wte::engine::add_scene<title_scene>();
+  wte::engine::add_scene<game_scene>();
 
   wte::engine::new_game = [](){
     //  Spawn starting entities
