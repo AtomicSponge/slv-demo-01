@@ -41,8 +41,28 @@ int main(int argc, char **argv) {
   //  Load settings.
   wte::config::load();
 
+  wte::engine::load_systems = [](){
+    wte::mgr::systems::add<wte::sys::movement>();
+    wte::mgr::systems::add<wte::sys::colision>();
+    wte::mgr::systems::add<wte::sys::logic>();
+    wte::mgr::systems::add<wte::sys::gfx::animate>();
+  };
+
+  wte::engine::on_engine_pause = [](){
+    wte::mgr::audio::music::a::pause();
+    wte::mgr::audio::ambiance::pause();
+  };
+
+  wte::engine::on_engine_unpause = [](){
+    wte::mgr::audio::music::a::unpause();
+    wte::mgr::audio::ambiance::unpause();
+  };
+
   //  Initialize game object
   wte::engine::initialize(768, 1024);
+
+  wte::engine::add_scene<title_scene>();
+  wte::engine::add_scene<game_scene>();
 
   //  Load PhysFS
   PHYSFS_init(argv[0]);
@@ -659,26 +679,6 @@ int main(int argc, char **argv) {
   /* **************************************************** */
   /* *** END ENTITY CREATION **************************** */
   /* **************************************************** */
-
-  wte::engine::load_systems = [](){
-    wte::mgr::systems::add<wte::sys::movement>();
-    wte::mgr::systems::add<wte::sys::colision>();
-    wte::mgr::systems::add<wte::sys::logic>();
-    wte::mgr::systems::add<wte::sys::gfx::animate>();
-  };
-
-  wte::engine::add_scene<title_scene>();
-  wte::engine::add_scene<game_scene>();
-
-  wte::engine::on_engine_pause = [](){
-    wte::mgr::audio::music::a::pause();
-    wte::mgr::audio::ambiance::pause();
-  };
-
-  wte::engine::on_engine_unpause = [](){
-    wte::mgr::audio::music::a::unpause();
-    wte::mgr::audio::ambiance::unpause();
-  };
 
   //  Run the game loop.
   wte::do_game();
