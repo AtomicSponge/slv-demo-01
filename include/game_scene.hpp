@@ -39,7 +39,7 @@ class game_scene final : public wte::scene {
         wte::mgr::variables::set("max_lives", (int64_t)3);
       wte::mgr::variables::set("lives", wte::mgr::variables::get<int64_t>("max_lives"));
 
-      wte::mgr::audio::music::a::play(wte::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
+      //wte::mgr::audio::music::a::play(wte::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
 
       wte::mgr::messages::load_script("game.sdf");
     };
