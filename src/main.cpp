@@ -251,6 +251,21 @@ int main(int argc, char **argv) {
   /* **************************************************** */
   /* *** ENTITY CREATION ******************************** */
   /* **************************************************** */
+  /* ************************************ */
+  /* *** Title Screen overlay entity **** */
+  /* ************************************ */
+  wte::mgr::spawner::add("title_screen", 0,
+    [](const wte::entity_id& e_id, const wte::msg_args& args) {
+      wte::mgr::world::set_name(e_id, "title_screen");
+      wte::mgr::world::add_component<wte::cmp::gfx::overlay>(e_id,
+        wte::mgr::assets::get<ALLEGRO_BITMAP>("title_screen"),
+        wte::mgr::assets::get<ALLEGRO_FONT>("wte_default_font"),
+        layer::background, 0, 0,
+        [](const wte::entity_id& e_id) {}
+      );
+    }
+  );
+
   /* ********************************* */
   /* *** Background entity *********** */
   /* ********************************* */
@@ -678,7 +693,7 @@ int main(int argc, char **argv) {
   /* **************************************************** */
 
   //  Run the game loop.
-  wte::engine::load_scene("game_scene");
+  wte::engine::load_scene("title_scene");
   wte::do_game();
 
   wte::mgr::variables::clear_save();
