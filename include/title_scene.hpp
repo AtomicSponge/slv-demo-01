@@ -10,12 +10,6 @@
 
 #include <allegro5/allegro_physfs.h>
 
-#include <damage.hpp>
-#include <energy.hpp>
-#include <health.hpp>
-#include <size.hpp>
-#include <stars.hpp>
-
 class title_scene final : public wte::scene {
   public:
     title_scene() : wte::scene("title_scene") {};
