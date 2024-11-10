@@ -1,7 +1,7 @@
 /*
  * WTEngine Demo
  * By:  Matthew Evans
- * File:  title_scene.cpp
+ * File:  title_scene.hpp
  *
  * See LICENSE.md for copyright information
  */
