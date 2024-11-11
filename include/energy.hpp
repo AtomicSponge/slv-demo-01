@@ -1,5 +1,5 @@
 /*
- * WTEngine Demo
+ * Silvergun Engine Demo
  * By:  Matthew Evans
  * File:  energy.hpp
  *
@@ -11,7 +11,7 @@
 #ifndef WTEDEMO_CMP_ENERGY_HPP
 #define WTEDEMO_CMP_ENERGY_HPP
 
-#include <wtengine/wtengine.hpp>
+#include <silvergun/silvergun.hpp>
 
 /*
  * Store the amount of energy an entity has

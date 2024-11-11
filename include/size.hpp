@@ -1,5 +1,5 @@
 /*
- * WTEngine Demo
+ * Silvergun Engine Demo
  * By:  Matthew Evans
  * File:  damage.hpp
  *
@@ -11,7 +11,7 @@
 #ifndef WTEDEMO_CMP_SIZE_HPP
 #define WTEDEMO_CMP_SIZE_HPP
 
-#include <wtengine/wtengine.hpp>
+#include <silvergun/silvergun.hpp>
 
 /*
  * Save the asteroid size

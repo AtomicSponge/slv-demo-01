@@ -1,5 +1,5 @@
 /*
- * WTEngine Demo
+ * Silvergun Engine Demo
  * By:  Matthew Evans
  * File:  stars.hpp
  *
@@ -11,7 +11,7 @@
 #ifndef WTEDEMO_CMP_STARS_HPP
 #define WTEDEMO_CMP_STARS_HPP
 
-#include <wtengine/wtengine.hpp>
+#include <silvergun/silvergun.hpp>
 
 #define MAX_STARS 64
 

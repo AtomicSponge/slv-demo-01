@@ -1,5 +1,5 @@
 /*
- * WTEngine Demo
+ * Silvergun Engine Demo
  * By:  Matthew Evans
  * File:  main.cpp
  *
@@ -8,7 +8,7 @@
 
 #include <ctime>
 
-#include <wtengine/wtengine.hpp>
+#include <silvergun/silvergun.hpp>
 
 #include <allegro5/allegro_physfs.h>
 #include <physfs.h>
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
   };*/
 
   //  Initialize game object
-  wte::display::set_window_title("WtEngine Demo");
+  wte::display::set_window_title("Silvergun Engine Demo");
   wte::engine::initialize(768, 1024);
 
   wte::engine::add_scene<title_scene>();

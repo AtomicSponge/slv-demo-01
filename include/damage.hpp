@@ -1,5 +1,5 @@
 /*
- * WTEngine Demo
+ * Silvergun Engine Demo
  * By:  Matthew Evans
  * File:  damage.hpp
  *
@@ -11,7 +11,7 @@
 #ifndef WTEDEMO_CMP_DAMAGE_HPP
 #define WTEDEMO_CMP_DAMAGE_HPP
 
-#include <wtengine/wtengine.hpp>
+#include <silvergun/silvergun.hpp>
 
 /*
  * Store the amount of damage an entity can do

@@ -1,12 +1,12 @@
 /*
- * WTEngine Demo
+ * Silvergun Engine Demo
  * By:  Matthew Evans
  * File:  game_scene.hpp
  *
  * See LICENSE.md for copyright information
  */
 
-#include <wtengine/wtengine.hpp>
+#include <silvergun/silvergun.hpp>
 
 #include <allegro5/allegro_physfs.h>
 
