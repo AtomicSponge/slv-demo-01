@@ -1,6 +1,6 @@
 ############################################################
 #
-#  WTEngine Demo CMake
+#  Silvergun Engine Demo CMake
 #
 #  See LICENSE.md for copyright information.
 #
@@ -15,7 +15,7 @@
 ########################################
 #  Configure build project
 cmake_minimum_required(VERSION 3.11)
-project(wte_demo VERSION 1.0 DESCRIPTION "WTEngine Demo Game")
+project(slvdemo VERSION 1.0 DESCRIPTION "Silvergun Engine Demo Game")
 enable_language(CXX)
 
 #  If a build type is not set, set it to Release
@@ -54,13 +54,13 @@ find_package(OpenGL REQUIRED)
 #  Configure Sources
 #
 ########################################
-add_executable(wte_demo
+add_executable(slvdemo
     src/main.cpp)
 
-target_compile_options(wte_demo PRIVATE)
+target_compile_options(slvdemo PRIVATE)
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
-    target_compile_options(wte_demo PRIVATE "-DWTE_BUILD_DEBUG")
+    target_compile_options(slvdemo PRIVATE "-DSLV_BUILD_DEBUG")
 endif()
 
 #  Set up flags for building with Emscripten
@@ -76,10 +76,10 @@ endif()
 #
 ########################################
 #  Set include folder for building
-target_include_directories(wte_demo PRIVATE include ${OPENGL_INCLUDE_DIRS})
+target_include_directories(slvdemo PRIVATE include ${OPENGL_INCLUDE_DIRS})
 
 #  Link libraries
-target_link_libraries(wte_demo PUBLIC
+target_link_libraries(slvdemo PUBLIC
   PkgConfig::ALLEGRO
   PkgConfig::ALLEGRO_MAIN
   PkgConfig::ALLEGRO_PHYSFS
@@ -92,10 +92,10 @@ target_link_libraries(wte_demo PUBLIC
   ${OPENGL_LIBRARIES})
 
 #  Set the build target
-set_target_properties(wte_demo PROPERTIES LINK_SEARCH_START_STATIC 1)
-set_target_properties(wte_demo PROPERTIES LINK_SEARCH_END_STATIC 1)
+set_target_properties(slvdemo PROPERTIES LINK_SEARCH_START_STATIC 1)
+set_target_properties(slvdemo PROPERTIES LINK_SEARCH_END_STATIC 1)
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
-set_target_properties(wte_demo PROPERTIES
+set_target_properties(slvdemo PROPERTIES
     CXX_STANDARD 17
     CXX_STANDARD_REQUIRED True)
 set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")

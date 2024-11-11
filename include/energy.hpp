@@ -8,15 +8,15 @@
  * Health component.
  */
 
-#ifndef WTEDEMO_CMP_ENERGY_HPP
-#define WTEDEMO_CMP_ENERGY_HPP
+#ifndef DEMO_CMP_ENERGY_HPP
+#define DEMO_CMP_ENERGY_HPP
 
 #include <silvergun/silvergun.hpp>
 
 /*
  * Store the amount of energy an entity has
  */
-class energy final : public wte::cmp::component {
+class energy final : public slv::cmp::component {
     public:
         /*!
          * Energy constructor.

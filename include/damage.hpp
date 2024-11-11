@@ -8,15 +8,15 @@
  * Damage component.
  */
 
-#ifndef WTEDEMO_CMP_DAMAGE_HPP
-#define WTEDEMO_CMP_DAMAGE_HPP
+#ifndef DEMO_CMP_DAMAGE_HPP
+#define DEMO_CMP_DAMAGE_HPP
 
 #include <silvergun/silvergun.hpp>
 
 /*
  * Store the amount of damage an entity can do
  */
-class damage final : public wte::cmp::component {
+class damage final : public slv::cmp::component {
     public:
         /*!
          * Damage constructor.

@@ -8,15 +8,15 @@
  * Size component.
  */
 
-#ifndef WTEDEMO_CMP_SIZE_HPP
-#define WTEDEMO_CMP_SIZE_HPP
+#ifndef DEMO_CMP_SIZE_HPP
+#define DEMO_CMP_SIZE_HPP
 
 #include <silvergun/silvergun.hpp>
 
 /*
  * Save the asteroid size
  */
-class size final : public wte::cmp::component {
+class size final : public slv::cmp::component {
     public:
         /*!
          * Size constructor.

@@ -8,19 +8,19 @@
  * Header file for the stars component
  */
 
-#ifndef WTEDEMO_CMP_STARS_HPP
-#define WTEDEMO_CMP_STARS_HPP
+#ifndef DEMO_CMP_STARS_HPP
+#define DEMO_CMP_STARS_HPP
 
 #include <silvergun/silvergun.hpp>
 
 #define MAX_STARS 64
 
-class stars : public wte::cmp::component {
+class stars : public slv::cmp::component {
     public:
         inline stars() : speed_mult(1.0) {
             for(int i = 0; i < MAX_STARS; i++) {
-                x[i] = std::rand() % wte::config::gfx::viewport_w + 1;
-                y[i] = std::rand() % wte::config::gfx::viewport_h + 1;
+                x[i] = std::rand() % slv::config::gfx::viewport_w + 1;
+                y[i] = std::rand() % slv::config::gfx::viewport_h + 1;
                 speed[i] = (std::rand() % 3 + 1) * 3;
                 color[i] = std::rand() % 4 + 1;
             }

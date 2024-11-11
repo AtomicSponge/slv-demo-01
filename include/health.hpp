@@ -8,15 +8,15 @@
  * Health component.
  */
 
-#ifndef WTEDEMO_CMP_HEALTH_HPP
-#define WTEDEMO_CMP_HEALTH_HPP
+#ifndef DEMO_CMP_HEALTH_HPP
+#define DEMO_CMP_HEALTH_HPP
 
 #include <silvergun/silvergun.hpp>
 
 /*
  * Store the amount of health an entity has
  */
-class health final : public wte::cmp::component {
+class health final : public slv::cmp::component {
     public:
         /*!
          * Health constructor.

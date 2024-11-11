@@ -6,43 +6,48 @@
  * See LICENSE.md for copyright information
  */
 
+#ifndef DEMO_GAME_SCENE_HPP
+#define DEMO_GAME_SCENE_HPP
+
 #include <silvergun/silvergun.hpp>
 
 #include <allegro5/allegro_physfs.h>
 
-class game_scene final : public wte::scene {
+class game_scene final : public slv::scene {
   public:
-    game_scene() : wte::scene("game_scene", wte::SCOPE_B) {};
+    game_scene() : slv::scene("game_scene", slv::SCOPE_B) {};
     ~game_scene() = default;
 
     void load(void) override {
       //  Spawn starting entities
-      wte::mgr::spawner::spawn("starfield", {});
-      wte::mgr::spawner::spawn("score_overlay", {});
-      wte::mgr::spawner::spawn("player_info_overlay", {});
-      wte::mgr::spawner::spawn("game_over_overlay", {});
-      wte::mgr::spawner::spawn("player", {});
-      wte::mgr::spawner::spawn("main_cannon", {});
-      wte::mgr::spawner::spawn("shield", {});
+      slv::mgr::spawner::spawn("starfield", {});
+      slv::mgr::spawner::spawn("score_overlay", {});
+      slv::mgr::spawner::spawn("player_info_overlay", {});
+      slv::mgr::spawner::spawn("game_over_overlay", {});
+      slv::mgr::spawner::spawn("player", {});
+      slv::mgr::spawner::spawn("main_cannon", {});
+      slv::mgr::spawner::spawn("shield", {});
 
       //  Reset score.
-      wte::mgr::variables::set("score", (int64_t)0);
+      slv::mgr::variables::set("score", (int64_t)0);
 
       //  Set number of lives.
-      if (wte::mgr::variables::get<int64_t>("max_lives") > 5 || wte::mgr::variables::get<int64_t>("max_lives") < 3)
-        wte::mgr::variables::set("max_lives", (int64_t)3);
-      wte::mgr::variables::set("lives", wte::mgr::variables::get<int64_t>("max_lives"));
+      if (slv::mgr::variables::get<int64_t>("max_lives") > 5 || slv::mgr::variables::get<int64_t>("max_lives") < 3)
+        slv::mgr::variables::set("max_lives", (int64_t)3);
+      slv::mgr::variables::set("lives", slv::mgr::variables::get<int64_t>("max_lives"));
 
-      //wte::mgr::audio::music::a::play(wte::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
+      //slv::mgr::audio::music::a::play(slv::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
 
-      wte::mgr::messages::load_script("game.sdf");
-      wte::config::flags::engine_paused = false;
+      slv::mgr::messages::load_script("game.sdf");
+      slv::config::flags::engine_paused = false;
     };
 
     void unload(void) override {
-      if (wte::mgr::variables::get<int64_t>("score") > wte::mgr::variables::get<int64_t>("hiscore"))
-        wte::mgr::variables::set("hiscore", wte::mgr::variables::get<int64_t>("score"));
+      if (slv::mgr::variables::get<int64_t>("score") > slv::mgr::variables::get<int64_t>("hiscore"))
+        slv::mgr::variables::set("hiscore", slv::mgr::variables::get<int64_t>("score"));
     };
 
     void loop(void) override {};
 };
+
+#endif

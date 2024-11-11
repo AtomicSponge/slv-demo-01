@@ -6,16 +6,21 @@
  * See LICENSE.md for copyright information
  */
 
+#ifndef DEMO_TITLE_SCENE_HPP
+#define DEMO_TITLE_SCENE_HPP
+
 #include <silvergun/silvergun.hpp>
 
 #include <allegro5/allegro_physfs.h>
 
-class title_scene final : public wte::scene {
+class title_scene final : public slv::scene {
   public:
-    title_scene() : wte::scene("title_scene", wte::SCOPE_A) {};
+    title_scene() : slv::scene("title_scene", slv::SCOPE_A) {};
     ~title_scene() = default;
     
     void load(void) override {
-      wte::mgr::spawner::spawn("title_screen", {});
+      slv::mgr::spawner::spawn("title_screen", {});
     };
 };
+
+#endif
