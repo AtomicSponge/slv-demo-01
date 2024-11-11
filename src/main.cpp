@@ -148,13 +148,13 @@ int main(int argc, char **argv) {
       }
     }
 
-    if (key == ALLEGRO_KEY_SPACE) {
+    /*if (key == ALLEGRO_KEY_SPACE) {
       if (wte::config::flags::engine_paused) {
         wte::config::flags::engine_paused = false;
       } else {
         wte::config::flags::engine_paused = true;
       }
-    }
+    }*/
   });
 
   wte::add_handler<wte::SCOPE_B, wte::EVENT_KEY_UP, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
