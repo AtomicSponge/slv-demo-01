@@ -13,14 +13,14 @@
 #include <allegro5/allegro_physfs.h>
 #include <physfs.h>
 
-#include <title_scene.hpp>
-#include <game_scene.hpp>
-
 #include <damage.hpp>
 #include <energy.hpp>
 #include <health.hpp>
 #include <size.hpp>
 #include <stars.hpp>
+
+#include <title_scene.hpp>
+#include <game_scene.hpp>
 
 namespace layer {
   static const std::size_t background = 0;
