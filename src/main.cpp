@@ -38,9 +38,6 @@ namespace player_pols {
 int main(int argc, char **argv) {
   std::srand(std::time(nullptr));  //  Seed random, using time.
 
-  //  Load settings.
-  wte::config::load();
-
   wte::engine::load_systems = [](){
     wte::mgr::systems::add<wte::sys::movement>();
     wte::mgr::systems::add<wte::sys::colision>();
@@ -73,8 +70,14 @@ int main(int argc, char **argv) {
   /* ********************************* */
   /* *** Input handling ************** */
   /* ********************************* */
-  /* Title screen handler - any key down starts game */
+  /* Title screen handler - ESC exits engine - any other key starts game */
   wte::add_handler<wte::SCOPE_A, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
+    if (key == ALLEGRO_KEY_ESCAPE) {
+      wte::engine::deinitialize();
+      PHYSFS_deinit();
+      return;
+    }
+
     wte::engine::load_scene("game_scene");
   });
 
@@ -705,16 +708,5 @@ int main(int argc, char **argv) {
   wte::engine::load_scene("title_scene");
   wte::do_game();
 
-  wte::mgr::variables::clear_save();
-  wte::mgr::variables::save<int64_t>("max_lives");
-  wte::mgr::variables::save<int64_t>("hiscore");
-
-  //  Save settings.
-  wte::config::save();
-
-  PHYSFS_deinit();
-
-  wte::engine::deinitialize();
-
-  return 0; //  Exit program.
+  return 0;
 }
