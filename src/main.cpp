@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
     wte::mgr::systems::add<wte::sys::gfx::animate>();
   };
 
-  wte::engine::on_engine_pause = [](){
+  /*wte::engine::on_engine_pause = [](){
     wte::mgr::audio::music::a::pause();
     wte::mgr::audio::ambiance::pause();
   };
@@ -56,7 +56,7 @@ int main(int argc, char **argv) {
   wte::engine::on_engine_unpause = [](){
     wte::mgr::audio::music::a::unpause();
     wte::mgr::audio::ambiance::unpause();
-  };
+  };*/
 
   //  Initialize game object
   wte::engine::initialize(768, 1024);
@@ -79,6 +79,20 @@ int main(int argc, char **argv) {
   });
 
   wte::add_handler<wte::SCOPE_B, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
+    if (key == ALLEGRO_KEY_SPACE) {
+      if (wte::config::flags::engine_paused) {
+        wte::config::flags::engine_paused = false;
+      } else {
+        wte::config::flags::engine_paused = true;
+      }
+    }
+
+    if (key == ALLEGRO_KEY_ESCAPE) {
+      wte::engine::load_scene("title_scene");
+    }
+
+    if (wte::config::flags::engine_paused) return;  //  Stop key down processing if engine is paused.
+
     if (key == ALLEGRO_KEY_W) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       player_pols::y = -1.0f;
@@ -147,14 +161,6 @@ int main(int argc, char **argv) {
         wte::mgr::audio::sample::play(wte::mgr::assets::get<ALLEGRO_SAMPLE>("shield"), "shield_sound");
       }
     }
-
-    /*if (key == ALLEGRO_KEY_SPACE) {
-      if (wte::config::flags::engine_paused) {
-        wte::config::flags::engine_paused = false;
-      } else {
-        wte::config::flags::engine_paused = true;
-      }
-    }*/
   });
 
   wte::add_handler<wte::SCOPE_B, wte::EVENT_KEY_UP, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
