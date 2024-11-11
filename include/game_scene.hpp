@@ -36,6 +36,7 @@ class game_scene final : public wte::scene {
       //wte::mgr::audio::music::a::play(wte::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
 
       wte::mgr::messages::load_script("game.sdf");
+      wte::config::flags::engine_paused = false;
     };
 
     void unload(void) override {

@@ -59,6 +59,7 @@ int main(int argc, char **argv) {
   };*/
 
   //  Initialize game object
+  wte::display::set_window_title("WtEngine Demo");
   wte::engine::initialize(768, 1024);
 
   wte::engine::add_scene<title_scene>();
@@ -73,9 +74,7 @@ int main(int argc, char **argv) {
   /* *** Input handling ************** */
   /* ********************************* */
   wte::add_handler<wte::SCOPE_A, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
-    if (key == ALLEGRO_KEY_SPACE) {
-      wte::engine::load_scene("game_scene");
-    }
+    wte::engine::load_scene("game_scene");
   });
 
   wte::add_handler<wte::SCOPE_B, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
