@@ -72,13 +72,13 @@ int main(int argc, char **argv) {
   /* ********************************* */
   /* *** Input handling ************** */
   /* ********************************* */
-  wte::add_handler<wte::NONGAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
+  wte::add_handler<wte::SCOPE_A, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_SPACE) {
-      //
+      wte::engine::load_scene("game_scene");
     }
   });
 
-  wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
+  wte::add_handler<wte::SCOPE_B, wte::EVENT_KEY_DOWN, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_W) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       player_pols::y = -1.0f;
@@ -157,7 +157,7 @@ int main(int argc, char **argv) {
     }
   });
 
-  wte::add_handler<wte::GAME_HANDLES, wte::EVENT_KEY_UP, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
+  wte::add_handler<wte::SCOPE_B, wte::EVENT_KEY_UP, wte::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_W) {
       wte::entity_id player_id = wte::mgr::world::get_id("player");
       if (player_pols::y < 0.0f) player_pols::y = 0.0f;
@@ -456,9 +456,10 @@ int main(int argc, char **argv) {
             wte::mgr::world::set_component<wte::cmp::gfx::sprite>(plr_id)->set_cycle("death");
             if (wte::mgr::variables::get<int64_t>("lives") == 0) {
               //  Game over!
-              wte::mgr::messages::add(wte::message(wte::engine_time::check() + 180, "system", "end-game", ""));
               wte::entity_id go_id = wte::mgr::world::get_id("game_over_overlay");
               wte::mgr::world::set_component<wte::cmp::gfx::overlay>(go_id)->visible = true;
+              //  TODO:  add msg processing so this is delayed
+              wte::engine::load_scene("title_scene");
             } else {
               std::string player_name = wte::mgr::world::get_name(plr_id);
               wte::mgr::messages::add(
