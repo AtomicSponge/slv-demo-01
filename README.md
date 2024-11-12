@@ -1,7 +1,7 @@
-### Simple demo game using WTEngine.
+### Simple demo using Silvergun Game Engine
 
 Requires the following libraries to build:
-- [WTEngine](https://github.com/AtomicSponge/wtengine)
+- [WTEngine](https://github.com/AtomicSponge/silvergun)
 - [Allegro](https://github.com/liballeg/allegro5)
 - [PhysFS](https://github.com/icculus/physfs)
 
