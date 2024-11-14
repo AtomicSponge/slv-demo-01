@@ -18,10 +18,17 @@ make
 ---
 
 ### Controls:
+
+Title screen:
+ - ESC - exit demo
+ - Any key - start demo
+
+Demo game:
  - W A S D - move
  - Right Alt - shield
  - Right Ctrl - laser
- - ESC - pause
+ - Space - pause
+ - ESC - end game
 
 ---
 
