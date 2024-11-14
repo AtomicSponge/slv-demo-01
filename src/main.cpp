@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
     slv::mgr::systems::add<slv::sys::gfx::animate>();
   };
 
-  /*slv::engine::on_engine_pause = [](){
+  slv::engine::on_engine_pause = [](){
     slv::mgr::audio::music::a::pause();
     slv::mgr::audio::ambiance::pause();
   };
@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
   slv::engine::on_engine_unpause = [](){
     slv::mgr::audio::music::a::unpause();
     slv::mgr::audio::ambiance::unpause();
-  };*/
+  };
 
   //  Initialize game object
   slv::display::set_window_title("Silvergun Engine Demo");
