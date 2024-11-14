@@ -36,13 +36,13 @@ class game_scene final : public slv::scene {
         slv::mgr::variables::set("max_lives", (int64_t)3);
       slv::mgr::variables::set("lives", slv::mgr::variables::get<int64_t>("max_lives"));
 
-      //slv::mgr::audio::music::a::play(slv::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
-
       slv::mgr::messages::load_script("game.sdf");
       slv::config::flags::engine_paused = false;
+      slv::mgr::audio::music::a::play(slv::mgr::assets::get<ALLEGRO_AUDIO_STREAM>("music"));
     };
 
     void unload(void) override {
+      slv::mgr::audio::music::a::stop();
       if (slv::mgr::variables::get<int64_t>("score") > slv::mgr::variables::get<int64_t>("hiscore"))
         slv::mgr::variables::set("hiscore", slv::mgr::variables::get<int64_t>("score"));
     };
