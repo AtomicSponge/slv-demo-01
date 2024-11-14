@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
   /* ********************************* */
   /* *** Input handling ************** */
   /* ********************************* */
-  /* Title screen handler - ESC exits engine - any other key starts game */
+  /* Title screen handler - ESC exits demo - any other key starts game */
   slv::add_handler<slv::SCOPE_A, slv::EVENT_KEY_DOWN, slv::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_ESCAPE) {
       slv::engine::deinitialize();
