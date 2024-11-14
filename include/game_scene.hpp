@@ -46,8 +46,6 @@ class game_scene final : public slv::scene {
       if (slv::mgr::variables::get<int64_t>("score") > slv::mgr::variables::get<int64_t>("hiscore"))
         slv::mgr::variables::set("hiscore", slv::mgr::variables::get<int64_t>("score"));
     };
-
-    void loop(void) override {};
 };
 
 #endif
