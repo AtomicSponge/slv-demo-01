@@ -470,6 +470,7 @@ int main(int argc, char **argv) {
               slv::entity_id go_id = slv::mgr::world::get_id("game_over_overlay");
               slv::mgr::world::set_component<slv::cmp::gfx::overlay>(go_id)->visible = true;
               //  TODO:  add msg processing so this is delayed
+              slv::config::flags::input_enabled = true;
               slv::engine::load_scene("title_scene");
             } else {
               std::string player_name = slv::mgr::world::get_name(plr_id);
