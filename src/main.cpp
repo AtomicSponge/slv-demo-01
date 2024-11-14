@@ -466,6 +466,7 @@ int main(int argc, char **argv) {
             slv::mgr::world::set_component<slv::cmp::motion>(plr_id)->y_vel = 0.0f;
             slv::mgr::world::set_component<slv::cmp::gfx::sprite>(plr_id)->set_cycle("death");
             if (slv::mgr::variables::get<int64_t>("lives") == 0) {
+              slv::mgr::audio::music::a::stop();
               //  Game over!  Show the overlay.
               slv::entity_id go_id = slv::mgr::world::get_id("game_over_overlay");
               slv::mgr::world::set_component<slv::cmp::gfx::overlay>(go_id)->visible = true;
