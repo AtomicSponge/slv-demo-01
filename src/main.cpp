@@ -257,7 +257,7 @@ int main(int argc, char **argv) {
   //  Load some samples in the asset manager.
   slv::mgr::assets::load<ALLEGRO_SAMPLE>("laser", slv::make_asset<ALLEGRO_SAMPLE>("sfx/laser.wav"));
   slv::mgr::assets::load<ALLEGRO_SAMPLE>("shield", slv::make_asset<ALLEGRO_SAMPLE>("sfx/shield.wav"));
-  slv::mgr::assets::load<ALLEGRO_SAMPLE>("megumin", slv::make_asset<ALLEGRO_SAMPLE>("sfx/megumin.wav"));
+  slv::mgr::assets::load<ALLEGRO_SAMPLE>("explosion", slv::make_asset<ALLEGRO_SAMPLE>("sfx/explosion.wav"));
 
   /* **************************************************** */
   /* *** ENTITY CREATION ******************************** */
@@ -460,7 +460,7 @@ int main(int argc, char **argv) {
 
             slv::mgr::world::set_component<slv::cmp::hitbox>(plr_id)->solid = false;
 
-            slv::mgr::audio::sample::play(slv::mgr::assets::get<ALLEGRO_SAMPLE>("megumin"), "once");
+            slv::mgr::audio::sample::play(slv::mgr::assets::get<ALLEGRO_SAMPLE>("explosion"), "once");
             slv::mgr::variables::set<int64_t>("lives", slv::mgr::variables::get<int64_t>("lives") - 1);
             slv::mgr::world::set_component<slv::cmp::motion>(plr_id)->x_vel = 0.0f;
             slv::mgr::world::set_component<slv::cmp::motion>(plr_id)->y_vel = 0.0f;
@@ -656,7 +656,7 @@ int main(int argc, char **argv) {
           //  Health check.  If asteroid's HP is <= 0, reward player with points and delete the entity.
           if (slv::mgr::world::get_component<health>(ast_id)->hp <= 0) {
             slv::mgr::messages::add(slv::message("spawner", "delete", slv::mgr::world::get_name(ast_id)));
-            slv::mgr::audio::sample::play(slv::mgr::assets::get<ALLEGRO_SAMPLE>("megumin"), "once", 1.0f, ALLEGRO_AUDIO_PAN_NONE, 1.8f);
+            slv::mgr::audio::sample::play(slv::mgr::assets::get<ALLEGRO_SAMPLE>("explosion"), "once", 1.0f, ALLEGRO_AUDIO_PAN_NONE, 1.8f);
 
             slv::mgr::variables::set("score",
               (slv::mgr::variables::get<int64_t>("score") +
