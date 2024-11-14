@@ -706,9 +706,9 @@ int main(int argc, char **argv) {
   /* *** END ENTITY CREATION **************************** */
   /* **************************************************** */
 
-  //  Run the game loop.
-  slv::engine::load_scene("title_scene");
-  slv::do_game();
+  slv::mgr::audio::set_level(0.5f);  //  Set main audio level.
+  slv::engine::load_scene("title_scene");  //  Load a scene.
+  slv::do_game();  //  Run the game loop.
 
   return 0;
 }
