@@ -663,6 +663,10 @@ int main(int argc, char **argv) {
               (slv::mgr::variables::get<int64_t>("score") +
               (10 * slv::mgr::world::get_component<size>(ast_id)->the_size)));
 
+            if (slv::mgr::variables::get<int64_t>("score") > slv::mgr::variables::get<int64_t>("hiscore")) {
+              slv::mgr::variables::set("hiscore", slv::mgr::variables::get<int64_t>("score"));
+            }
+
             //  If the asteroid was size >= 4, split into two.
             if (slv::mgr::world::get_component<size>(ast_id)->the_size >= 4) {
               const int new_size = slv::mgr::world::get_component<size>(ast_id)->the_size / 2;
