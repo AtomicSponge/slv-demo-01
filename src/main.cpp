@@ -471,8 +471,8 @@ int main(int argc, char **argv) {
               slv::entity_id go_id = slv::mgr::world::get_id("game_over_overlay");
               slv::mgr::world::set_component<slv::cmp::gfx::overlay>(go_id)->visible = true;
               //  Wait a bit then end the game.
+              slv::mgr::messages::add(slv::message(slv::engine_time::check() + 180, "system", "enable-input", ""));
               slv::mgr::messages::add(slv::message(slv::engine_time::check() + 180, "system", "load-scene", "title_scene"));
-              slv::mgr::messages::add(slv::message(slv::engine_time::check() + 181, "system", "enable-input", ""));
             } else {
               std::string player_name = slv::mgr::world::get_name(plr_id);
               slv::mgr::messages::add(
