@@ -659,10 +659,12 @@ int main(int argc, char **argv) {
             slv::mgr::messages::add(slv::message("spawner", "delete", slv::mgr::world::get_name(ast_id)));
             slv::mgr::audio::sample::play(slv::mgr::assets::get<ALLEGRO_SAMPLE>("explosion"), "once", 1.0f, ALLEGRO_AUDIO_PAN_NONE, 1.8f);
 
+            //  Increase the score.
             slv::mgr::variables::set("score",
               (slv::mgr::variables::get<int64_t>("score") +
               (10 * slv::mgr::world::get_component<size>(ast_id)->the_size)));
 
+            //  If the current score is the new hiscore, update.
             if (slv::mgr::variables::get<int64_t>("score") > slv::mgr::variables::get<int64_t>("hiscore")) {
               slv::mgr::variables::set("hiscore", slv::mgr::variables::get<int64_t>("score"));
             }
