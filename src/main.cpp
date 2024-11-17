@@ -73,8 +73,7 @@ int main(int argc, char **argv) {
   /* Title screen handler - ESC exits demo - any other key starts game */
   slv::add_handler<slv::SCOPE_A, slv::EVENT_KEY_DOWN, slv::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_ESCAPE) {
-      slv::engine::deinitialize();
-      PHYSFS_deinit();
+      slv::stop_game();  //  Stop the game loop.
       return;
     }
 
@@ -714,7 +713,9 @@ int main(int argc, char **argv) {
 
   slv::mgr::audio::set_level(0.5f);  //  Set main audio level.
   slv::engine::load_scene("title_scene");  //  Load a scene.
-  slv::do_game();  //  Run the game loop.
+  slv::start_game();  //  Run the game loop.
 
+  slv::engine::deinitialize();
+  PHYSFS_deinit();
   return 0;
 }
