@@ -65,7 +65,7 @@ int main(int argc, char **argv) {
   /* Title screen handler - ESC exits demo - any other key starts game */
   slv::add_handler<slv::SCOPE_A, slv::EVENT_KEY_DOWN, slv::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
     if (key == ALLEGRO_KEY_ESCAPE) {
-      slv::stop_game();  //  Stop the game loop.
+      //slv::stop_game();  //  Stop the game loop.
       return;
     }
 
@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
       slv::mgr::world::set_component<slv::cmp::motion>(player_id)->x_vel = 5.0f;
       slv::mgr::world::set_component<slv::cmp::motion>(player_id)->y_vel = 5.0f;
     }
-    if (key == ALLEGRO_KEY_RCTRL) {
+    if (key == ALLEGRO_KEY_L) {
       slv::entity_id player_id = slv::mgr::world::get_id("player");
       slv::entity_id can_id = slv::mgr::world::get_id("main_cannon");
       //  Set the cannon's location to match the player.
@@ -137,7 +137,7 @@ int main(int argc, char **argv) {
       //  Play sound effect.
       slv::mgr::audio::sample::play(slv::mgr::assets::get<ALLEGRO_SAMPLE>("laser"), "cannon_fire");
     }
-    if (key == ALLEGRO_KEY_ALTGR) {
+    if (key == ALLEGRO_KEY_K) {
       slv::entity_id player_id = slv::mgr::world::get_id("player");
       slv::entity_id shd_id = slv::mgr::world::get_id("shield");
       //  Set the shield's location to match the player
@@ -192,7 +192,7 @@ int main(int argc, char **argv) {
         slv::mgr::world::set_component<slv::cmp::motion>(player_id)->y_vel = 0.0f;
       }
     }
-    if (key == ALLEGRO_KEY_RCTRL) {
+    if (key == ALLEGRO_KEY_L) {
       //  Turn the cannon off.
       slv::entity_id can_id = slv::mgr::world::get_id("main_cannon");
       slv::mgr::world::set_component<slv::cmp::gfx::sprite>(can_id)->visible = false;
@@ -201,7 +201,7 @@ int main(int argc, char **argv) {
       //  Stop sound effect.
       slv::mgr::audio::sample::stop("cannon_fire");
     }
-    if (key == ALLEGRO_KEY_ALTGR) {
+    if (key == ALLEGRO_KEY_K) {
       slv::entity_id player_id = slv::mgr::world::get_id("player");
       slv::entity_id shd_id = slv::mgr::world::get_id("shield");
       //  Disable shield.

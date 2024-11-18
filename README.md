@@ -11,13 +11,12 @@ Requires the following libraries to build:
 ### Controls:
 
 Title screen:
- - ESC - exit demo
  - Any key - start demo
 
 Demo game:
  - W A S D - move
- - Right Alt - shield
- - Right Ctrl - laser
+ - K - shield
+ - L - laser
  - Space - pause
  - ESC - end game
 
