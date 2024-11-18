@@ -8,27 +8,27 @@ FetchContent_Declare(
   GIT_TAG        5.2.9.1
 )
 FetchContent_Declare(
-	silvergun
-	GIT_REPOSITORY https://github.com/AtomicSponge/silvergun.git
-	GIT_TAG				 main
+  silvergun
+  GIT_REPOSITORY https://github.com/AtomicSponge/silvergun.git
+  GIT_TAG        main
 )
 FetchContent_GetProperties(allegro5)
 FetchContent_GetProperties(silvergun)
 if(NOT allegro5_POPULATED)
   FetchContent_Populate(allegro5)
-	if (MSVC)
-		set(SHARED ON)
-	else()
-		set(SHARED OFF)
-	endif()
-	set(WANT_TESTS OFF)
-	set(WANT_EXAMPLES OFF)
-	set(WANT_DEMO OFF)
+  if (MSVC)
+    set(SHARED ON)
+  else()
+    set(SHARED OFF)
+  endif()
+  set(WANT_TESTS OFF)
+  set(WANT_EXAMPLES OFF)
+  set(WANT_DEMO OFF)
   add_subdirectory(${allegro5_SOURCE_DIR} ${allegro5_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
 if(NOT silvergun_POPULATED)
-	FetchContent_Populate(silvergun)
+  FetchContent_Populate(silvergun)
 endif()
 
 add_executable(slvdemo src/main.cpp)
@@ -48,17 +48,17 @@ target_link_libraries(slvdemo LINK_PUBLIC allegro allegro_main allegro_audio all
 # target, but we do it manually.
 
 file(COPY ${allegro5_SOURCE_DIR}/addons/acodec/allegro5/allegro_acodec.h
-	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+  DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
 )
 file(COPY ${allegro5_SOURCE_DIR}/addons/audio/allegro5/allegro_audio.h
-	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+  DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
 )
 file(COPY ${allegro5_SOURCE_DIR}/addons/font/allegro5/allegro_font.h
-	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+  DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
 )
 file(COPY ${allegro5_SOURCE_DIR}/addons/image/allegro5/allegro_image.h
-	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+  DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
 )
 file(COPY ${allegro5_SOURCE_DIR}/addons/primitives/allegro5/allegro_primitives.h
-	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+  DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
 )
