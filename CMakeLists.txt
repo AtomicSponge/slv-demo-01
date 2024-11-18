@@ -1,103 +1,49 @@
-############################################################
-#
-#  Silvergun Engine Demo CMake
-#
-#  See LICENSE.md for copyright information.
-#
-#  This builds the engine example.
-#
-############################################################
+cmake_minimum_required(VERSION 3.5)
+project (SilvergunProject)
+include(FetchContent)
 
-########################################
-#
-#  Project Configuration
-#
-########################################
-#  Configure build project
-cmake_minimum_required(VERSION 3.11)
-project(slvdemo VERSION 1.0 DESCRIPTION "Silvergun Engine Demo Game")
-enable_language(CXX)
-
-#  If a build type is not set, set it to Release
-if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
+FetchContent_Declare(
+  allegro5
+  GIT_REPOSITORY https://github.com/liballeg/allegro5.git
+  GIT_TAG        5.2.7.0
+)
+FetchContent_Declare(
+	silvergun
+	GIT_REPOSITORY https://github.com/AtomicSponge/silvergun.git
+	GIT_TAG				 main
+)
+FetchContent_GetProperties(allegro5)
+FetchContent_GetProperties(silvergun)
+if(NOT allegro5_POPULATED)
+  FetchContent_Populate(allegro5)
+	if (MSVC)
+		set(SHARED ON)
+	else()
+		set(SHARED OFF)
+	endif()
+	set(WANT_TESTS OFF)
+	set(WANT_EXAMPLES OFF)
+	set(WANT_DEMO OFF)
+  add_subdirectory(${allegro5_SOURCE_DIR} ${allegro5_BINARY_DIR} EXCLUDE_FROM_ALL)
 endif()
 
-#  Set compiler flags
-set(CMAKE_CXX_FLAGS "-Wall")
-set(CMAKE_CXX_FLAGS_DEBUG "-g")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
-
-########################################
-#
-#  Library Detection
-#
-########################################
-#  pkg-config checks
-find_package(PkgConfig REQUIRED)
-  #  Check for Allegro and its required modules
-  pkg_check_modules(ALLEGRO REQUIRED IMPORTED_TARGET allegro-5)
-  pkg_check_modules(ALLEGRO_MAIN REQUIRED IMPORTED_TARGET allegro_main-5)
-  pkg_check_modules(ALLEGRO_PHYSFS REQUIRED IMPORTED_TARGET allegro_physfs-5)
-  pkg_check_modules(ALLEGRO_AUDIO REQUIRED IMPORTED_TARGET allegro_audio-5)
-  pkg_check_modules(ALLEGRO_ACODEC REQUIRED IMPORTED_TARGET allegro_acodec-5)
-  pkg_check_modules(ALLEGRO_FONT REQUIRED IMPORTED_TARGET allegro_font-5)
-  pkg_check_modules(ALLEGRO_IMAGE REQUIRED IMPORTED_TARGET allegro_image-5)
-  pkg_check_modules(ALLEGRO_PRIMV REQUIRED IMPORTED_TARGET allegro_primitives-5)
-  #  Check for physfs
-  pkg_check_modules(PHYSFS REQUIRED IMPORTED_TARGET physfs)
-#  Check for OpenGL
-find_package(OpenGL REQUIRED)
-
-########################################
-#
-#  Configure Sources
-#
-########################################
-add_executable(slvdemo
-    src/main.cpp)
-
-target_compile_options(slvdemo PRIVATE)
-
-if(CMAKE_BUILD_TYPE MATCHES Debug)
-    target_compile_options(slvdemo PRIVATE "-DSLV_BUILD_DEBUG")
+if(NOT silvergun_POPULATED)
+	FetchContent_Populate(silvergun)
+	#add_subdirectory(${silvergun_SOURCE_DIR})
 endif()
 
-#  Set up flags for building with Emscripten
-if(EMSCRIPTEN)
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_FREETYPE=1 -s USE_VORBIS=1 -s USE_OGG=1 -s USE_LIBJPEG=1 -s USE_SDL=2 -s USE_LIBPNG=1 -O3")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_FREETYPE=1 -s USE_VORBIS=1 -s USE_OGG=1 -s USE_LIBJPEG=1 -s USE_SDL=2 -s USE_LIBPNG=1 -s -O3")
-  set(CMAKE_EXECUTABLE_SUFFIX ".html")
-endif()
+add_executable(slvdemo src/main.cpp)
 
-########################################
-#
-#  Build Process
-#
-########################################
-#  Set include folder for building
-target_include_directories(slvdemo PRIVATE include ${OPENGL_INCLUDE_DIRS})
+target_include_directories(slvdemo PUBLIC ${allegro5_SOURCE_DIR}/include)
+target_include_directories(slvdemo PUBLIC ${allegro5_BINARY_DIR}/include)
+target_include_directories(slvdemo PUBLIC ${silvergun_SOURCE_DIR}/include)
+target_link_libraries(slvdemo LINK_PUBLIC allegro allegro_main allegro_audio allegro_acodec allegro_font allegro_image allegro_primitives)
 
-#  Link libraries
-target_link_libraries(slvdemo PUBLIC
-  PkgConfig::ALLEGRO
-  PkgConfig::ALLEGRO_MAIN
-  PkgConfig::ALLEGRO_PHYSFS
-  PkgConfig::ALLEGRO_AUDIO
-  PkgConfig::ALLEGRO_ACODEC
-  PkgConfig::ALLEGRO_FONT
-  PkgConfig::ALLEGRO_IMAGE
-  PkgConfig::ALLEGRO_PRIMV
-  PkgConfig::PHYSFS
-  ${OPENGL_LIBRARIES})
-
-#  Set the build target
-set_target_properties(slvdemo PROPERTIES LINK_SEARCH_START_STATIC 1)
-set_target_properties(slvdemo PROPERTIES LINK_SEARCH_END_STATIC 1)
-set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
-set_target_properties(slvdemo PROPERTIES
-    CXX_STANDARD 17
-    CXX_STANDARD_REQUIRED True)
-set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
-
-#  No install for the demo - Done!
+# These include files are typically copied into the correct places via allegro's install
+# target, but we do it manually.
+file(COPY ${allegro5_SOURCE_DIR}/addons/font/allegro5/allegro_font.h
+	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+)
+file(COPY ${allegro5_SOURCE_DIR}/addons/primitives/allegro5/allegro_primitives.h
+	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+)

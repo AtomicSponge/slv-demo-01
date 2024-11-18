@@ -10,17 +10,14 @@
 
 #include <silvergun/silvergun.hpp>
 
-#include <allegro5/allegro_physfs.h>
-#include <physfs.h>
+#include "include/damage.hpp"
+#include "include/energy.hpp"
+#include "include/health.hpp"
+#include "include/size.hpp"
+#include "include/stars.hpp"
 
-#include <damage.hpp>
-#include <energy.hpp>
-#include <health.hpp>
-#include <size.hpp>
-#include <stars.hpp>
-
-#include <title_scene.hpp>
-#include <game_scene.hpp>
+#include "include/title_scene.hpp"
+#include "include/game_scene.hpp"
 
 namespace layer {
   static const std::size_t background = 0;
@@ -61,11 +58,6 @@ int main(int argc, char **argv) {
 
   slv::engine::add_scene<title_scene>();
   slv::engine::add_scene<game_scene>();
-
-  //  Load PhysFS
-  PHYSFS_init(argv[0]);
-  PHYSFS_mount("data.zip", NULL, 1);
-  al_set_physfs_file_interface();
 
   /* ********************************* */
   /* *** Input handling ************** */
@@ -716,6 +708,5 @@ int main(int argc, char **argv) {
   slv::start_game();  //  Run the game loop.
 
   slv::engine::deinitialize();
-  PHYSFS_deinit();
   return 0;
 }
