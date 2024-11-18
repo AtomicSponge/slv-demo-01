@@ -246,9 +246,9 @@ int main(int argc, char **argv) {
   //  Load music for the demo into the asset manager.
   slv::mgr::assets::load<ALLEGRO_AUDIO_STREAM>("music", slv::make_asset<ALLEGRO_AUDIO_STREAM>("music.ogg"));
   //  Load some samples in the asset manager.
-  slv::mgr::assets::load<ALLEGRO_SAMPLE>("laser", slv::make_asset<ALLEGRO_SAMPLE>("sfx/laser.wav"));
-  slv::mgr::assets::load<ALLEGRO_SAMPLE>("shield", slv::make_asset<ALLEGRO_SAMPLE>("sfx/shield.wav"));
-  slv::mgr::assets::load<ALLEGRO_SAMPLE>("explosion", slv::make_asset<ALLEGRO_SAMPLE>("sfx/explosion.wav"));
+  slv::mgr::assets::load<ALLEGRO_SAMPLE>("laser", slv::make_asset<ALLEGRO_SAMPLE>("laser.wav"));
+  slv::mgr::assets::load<ALLEGRO_SAMPLE>("shield", slv::make_asset<ALLEGRO_SAMPLE>("shield.wav"));
+  slv::mgr::assets::load<ALLEGRO_SAMPLE>("explosion", slv::make_asset<ALLEGRO_SAMPLE>("explosion.wav"));
 
   /* **************************************************** */
   /* *** ENTITY CREATION ******************************** */

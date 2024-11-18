@@ -29,7 +29,6 @@ endif()
 
 if(NOT silvergun_POPULATED)
 	FetchContent_Populate(silvergun)
-	#add_subdirectory(${silvergun_SOURCE_DIR})
 endif()
 
 add_executable(slvdemo src/main.cpp)
