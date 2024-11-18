@@ -28,3 +28,8 @@ Demo game:
 - [Laser](https://freesound.org/people/SamsterBirdies/sounds/470903/)
 - [Explosion](https://freesound.org/people/deleted_user_5405837/sounds/399303/)
 - [Shield](https://freesound.org/people/matucha/sounds/116037/)
+
+---
+
+### Template Repository:
+<https://github.com/connorjclark/allegro-project>
