@@ -40,7 +40,17 @@ target_link_libraries(slvdemo LINK_PUBLIC allegro allegro_main allegro_audio all
 
 # These include files are typically copied into the correct places via allegro's install
 # target, but we do it manually.
+
+file(COPY ${allegro5_SOURCE_DIR}/addons/acodec/allegro5/allegro_acodec.h
+	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+)
+file(COPY ${allegro5_SOURCE_DIR}/addons/audio/allegro5/allegro_audio.h
+	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+)
 file(COPY ${allegro5_SOURCE_DIR}/addons/font/allegro5/allegro_font.h
+	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
+)
+file(COPY ${allegro5_SOURCE_DIR}/addons/image/allegro5/allegro_image.h
 	DESTINATION ${allegro5_SOURCE_DIR}/include/allegro5
 )
 file(COPY ${allegro5_SOURCE_DIR}/addons/primitives/allegro5/allegro_primitives.h

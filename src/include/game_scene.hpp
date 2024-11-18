@@ -11,8 +11,6 @@
 
 #include <silvergun/silvergun.hpp>
 
-#include <allegro5/allegro_physfs.h>
-
 class game_scene final : public slv::scene {
   public:
     game_scene() : slv::scene("game_scene", slv::SCOPE_B) {};
