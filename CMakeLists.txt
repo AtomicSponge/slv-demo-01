@@ -33,6 +33,12 @@ endif()
 
 add_executable(slvdemo src/main.cpp)
 
+target_compile_options(slvdemo PRIVATE)
+
+if(CMAKE_BUILD_TYPE MATCHES Debug)
+  target_compile_options(slvdemo PRIVATE "-DSLV_BUILD_DEBUG")
+endif()
+
 target_include_directories(slvdemo PUBLIC ${allegro5_SOURCE_DIR}/include)
 target_include_directories(slvdemo PUBLIC ${allegro5_BINARY_DIR}/include)
 target_include_directories(slvdemo PUBLIC ${silvergun_SOURCE_DIR}/include)
