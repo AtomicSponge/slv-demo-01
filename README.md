@@ -1,10 +1,8 @@
 ### Simple demo using Silvergun Game Engine
 
 Requires the following libraries to build:
-- [WTEngine](https://github.com/AtomicSponge/silvergun)
+- [Silvergun](https://github.com/AtomicSponge/silvergun)
 - [Allegro](https://github.com/liballeg/allegro5)
-
-*Note:* The demo code has been updated since the last release and had the menus pulled out for now.  But for a working Win demo, check the [releases](https://github.com/AtomicSponge/slv-demo-01/tree/main/releases).
 
 ---
 
