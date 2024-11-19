@@ -1,5 +1,4 @@
 name: Build Silvergun Demo
-
 on: [push]
 
 jobs:
@@ -7,6 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: mymindstorm/setup-emsdk@v14
+
       - name: Build demo
-      - run: sh build_emscripten.sh
+        run: sh build_emscripten.sh
