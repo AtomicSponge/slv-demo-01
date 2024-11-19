@@ -2,14 +2,15 @@
 
 set -e
 
-mkdir -p build
-cd build
+ASSETS_DIR=assets
+BUILD_DIR=build
+
+mkdir -p ${BUILD_DIR}
+cd ${BUILD_DIR}
 cmake ..
 cmake --build . -t slvdemo
 
 #  Copy assets
-ASSETS_DIR=assets
-BUILD_DIR=build
 cd ..
 cp -r ${ASSETS_DIR}/asteroid.png ${BUILD_DIR}
 cp -r ${ASSETS_DIR}/background_control.sdf ${BUILD_DIR}
