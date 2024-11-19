@@ -28,4 +28,3 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build_emscripten
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
