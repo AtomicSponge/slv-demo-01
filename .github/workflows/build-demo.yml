@@ -10,4 +10,4 @@ jobs:
       - uses: mymindstorm/setup-emsdk@v14
 
       - name: Build demo
-        run: sh build_emscripten.sh
+        run: bash build_emscripten.sh
