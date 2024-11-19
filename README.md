@@ -1,5 +1,7 @@
 ### Simple demo using Silvergun Game Engine
 
+<https://atomicsponge.github.io/slv-demo-01/slvdemo.html>
+
 Requires the following libraries to build:
 - [Silvergun](https://github.com/AtomicSponge/silvergun)
 - [Allegro](https://github.com/liballeg/allegro5)
