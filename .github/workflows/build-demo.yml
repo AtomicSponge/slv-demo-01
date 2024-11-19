@@ -1,3 +1,5 @@
+# https://github.com/marketplace/actions/setup-emscripten-toolchain
+
 name: Build Silvergun Demo
 on: [push]
 
@@ -6,8 +8,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - uses: mymindstorm/setup-emsdk@v14
 
       - name: Build demo
-        run: bash build_emscripten.sh
+        run: |
+          bash build_emscripten.sh
+          cd build_emscripten
+          rm -rf _deps
+          rm -rf assets
+          rm -rf CMakeFiles
+          rm -rf demos
+          find . ! -name 'slvdemo.*' -delete
+
+      - uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: gh-pages
+          FOLDER: build_emscripten
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
