@@ -11,8 +11,10 @@ jobs:
       - uses: mymindstorm/setup-emsdk@v14
 
       - name: Build demo
+        run: bash build_emscripten.sh
+      
+      - name: Clean build artifacts
         run: |
-          bash build_emscripten.sh
           cd build_emscripten
           rm -rf _deps
           rm -rf assets
