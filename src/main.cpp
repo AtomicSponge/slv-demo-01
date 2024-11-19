@@ -226,7 +226,6 @@ int main(int argc, char **argv) {
   slv::mgr::variables::load<int64_t>("max_lives");
   slv::mgr::variables::load<int64_t>("hiscore");
 
-
   /* ********************************* */
   /* *** Asset loading *************** */
   /* ********************************* */
