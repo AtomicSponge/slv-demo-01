@@ -1,7 +1,9 @@
-# https://github.com/marketplace/actions/setup-emscripten-toolchain
-
-name: Build Silvergun Demo
+name: Build Silvergun Engine Demo (emcc)
 on: [push]
+
+# https://github.com/marketplace/actions/checkout
+# https://github.com/marketplace/actions/setup-emscripten-toolchain
+# https://github.com/marketplace/actions/push-git-subdirectory-as-branch
 
 jobs:
   build:
