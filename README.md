@@ -1,7 +1,7 @@
 ### Simple demo using Silvergun Game Engine
 
 Online playable demo:
-<https://atomicsponge.github.io/slv-demo-01/slvdemo.html>
+<https://atomicsponge.github.io/slv-demo-01/>
 
 Requires the following libraries to build:
 - [Silvergun](https://github.com/AtomicSponge/silvergun)
