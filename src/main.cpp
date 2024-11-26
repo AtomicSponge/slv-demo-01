@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
   );
   slv::mgr::assets::load<ALLEGRO_BITMAP>("score_overlay", slv::make_asset<ALLEGRO_BITMAP>(200, 20));
   slv::mgr::assets::load<ALLEGRO_BITMAP>("player_info_overlay", slv::make_asset<ALLEGRO_BITMAP>(200, 20));
-  slv::mgr::assets::load<ALLEGRO_BITMAP>("title_screen", slv::make_asset<ALLEGRO_BITMAP>("title.bmp"));
+  slv::mgr::assets::load<ALLEGRO_BITMAP>("title_screen", slv::make_asset<ALLEGRO_BITMAP>("title.png"));
   slv::mgr::assets::load<ALLEGRO_BITMAP>("game_over_overlay", slv::make_asset<ALLEGRO_BITMAP>("game_over.png"));
   slv::mgr::assets::load<ALLEGRO_BITMAP>("ship", slv::make_asset<ALLEGRO_BITMAP>("ship.png"));
   slv::mgr::assets::load<ALLEGRO_BITMAP>("cannon", slv::make_asset<ALLEGRO_BITMAP>("cannon.png"));
