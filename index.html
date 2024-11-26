@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+  <body>
+    <div>
+      <canvas id="canvas"></canvas>
+    </div>
+    <div>
+      <h1>Keyboard Controls</h1>
+      W A S D - move ship<br/>
+      K - Shield<br/>
+      L - Laser<br/>
+      Space - Pause<br/>
+    </div>
+    <script>
+			var Module = {
+				print: (function() {
+					var element = document.getElementById('app');
+					return function(text) {
+						element.innerHTML += text + "<br>";
+					};
+				})(),
+				printErr: function(text) {
+						if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
+						if (0) {
+							dump(text + '\n');
+						}
+				},				
+				canvas: (function() {
+					var canvas = document.getElementById('canvas');
+					return canvas;
+				})()
+			};
+		</script>
+    <script src="slvdemo.js"></script>
+  </body>
+</html>
