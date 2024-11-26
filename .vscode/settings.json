@@ -2,7 +2,6 @@
   "files.exclude": {
     "**/.git": true,
     "**/build": true,
-    "**/build_emscripten": true,
-    "**/releases": true
+    "**/build_emscripten": true
   }
 }
