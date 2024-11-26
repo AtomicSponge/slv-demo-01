@@ -23,6 +23,12 @@ jobs:
           rm -rf CMakeFiles
           rm -rf demos
           find . ! -name 'slvdemo.*' -delete
+          rm slvdemo.html
+
+      - name: Copy HTML files
+        run: |
+          cp -r html/index.html build_emscripten/index.html
+          cp -r html/index.css build_emscripten/index.css
 
       - uses: s0/git-publish-subdir-action@develop
         env:
