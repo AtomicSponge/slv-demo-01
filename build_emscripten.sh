@@ -22,7 +22,7 @@ cp -r ${ASSETS_DIR}/shield.png ${BUILD_DIR}/${ASSETS_DIR}
 cp -r ${ASSETS_DIR}/shield.wav ${BUILD_DIR}/${ASSETS_DIR}
 cp -r ${ASSETS_DIR}/ship.png ${BUILD_DIR}/${ASSETS_DIR}
 cp -r ${ASSETS_DIR}/spawn_asteroids.sdf ${BUILD_DIR}/${ASSETS_DIR}
-cp -r ${ASSETS_DIR}/title.bmp ${BUILD_DIR}/${ASSETS_DIR}
+cp -r ${ASSETS_DIR}/title.png ${BUILD_DIR}/${ASSETS_DIR}
 
 cd ${BUILD_DIR}
 
