@@ -17,15 +17,15 @@
  * Store the amount of damage an entity can do
  */
 class damage final : public slv::cmp::component {
-    public:
-        /*!
-         * Damage constructor.
-         * \param d Damage amount.
-         * \return void
-         */
-        inline damage(const int& d) : dmg(d) {};
+  public:
+    /*!
+     * Damage constructor.
+     * \param d Damage amount.
+     * \return void
+     */
+    inline damage(const int& d) : dmg(d) {};
 
-        int dmg;
+    int dmg;
 };
 
 #endif

@@ -17,15 +17,15 @@
  * Save the asteroid size
  */
 class size final : public slv::cmp::component {
-    public:
-        /*!
-         * Size constructor.
-         * \param s Size.
-         * \return void
-         */
-        inline size(const int& s) : the_size(s) {};
+  public:
+    /*!
+     * Size constructor.
+     * \param s Size.
+     * \return void
+     */
+    inline size(const int& s) : the_size(s) {};
 
-        int the_size;
+    int the_size;
 };
 
 #endif
