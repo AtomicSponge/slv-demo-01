@@ -12,8 +12,10 @@ FetchContent_Declare(
   GIT_REPOSITORY https://github.com/AtomicSponge/silvergun.git
   GIT_TAG        main
 )
+
 FetchContent_GetProperties(allegro5)
 FetchContent_GetProperties(silvergun)
+
 if(NOT allegro5_POPULATED)
   FetchContent_Populate(allegro5)
   if (MSVC)

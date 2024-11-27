@@ -36,7 +36,6 @@ USE_FLAGS=(
   -O3
 )
 
-# Wish I knew how to remove this.
 SDL2_INCLUDE_DIR=$(dirname $(which emcc))/cache/sysroot/include
 
 emcmake cmake .. \
