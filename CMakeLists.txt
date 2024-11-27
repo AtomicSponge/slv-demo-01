@@ -28,7 +28,7 @@ if(NOT allegro5_POPULATED)
 endif()
 
 if(NOT silvergun_POPULATED)
-  FetchContent_Populate(silvergun)
+  FetchContent_MakeAvailable(silvergun)
 endif()
 
 add_executable(slvdemo src/main.cpp)
