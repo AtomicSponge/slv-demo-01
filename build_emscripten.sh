@@ -27,12 +27,12 @@ cp -r ${ASSETS_DIR}/title.png ${BUILD_DIR}/${ASSETS_DIR}
 cd ${BUILD_DIR}
 
 USE_FLAGS=(
-  -s USE_FREETYPE=1
-  -s USE_VORBIS=1
-  -s USE_OGG=1
-  -s USE_LIBJPEG=1
-  -s USE_SDL=2
-  -s USE_LIBPNG=1
+  --use-port=freetype
+  --use-port=vorbis
+  --use-port=ogg
+  --use-port=libjpeg
+  --use-port=sdl2
+  --use-port=libpng
   -s FULL_ES2=1
   -s ASYNCIFY
   -O3
