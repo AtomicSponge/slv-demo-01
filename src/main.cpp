@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
 
   //  Initialize game object
   slv::display::set_window_title("Silvergun Engine Demo");
-  slv::engine::initialize(768, 1024);
+  slv::engine::initialize(768, 928);
 
   slv::engine::add_scene<title_scene>();
   slv::engine::add_scene<game_scene>();

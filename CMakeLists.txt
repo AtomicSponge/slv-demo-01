@@ -5,7 +5,7 @@ include(FetchContent)
 FetchContent_Declare(
   allegro5
   GIT_REPOSITORY https://github.com/liballeg/allegro5.git
-  GIT_TAG        5.2.10.0
+  GIT_TAG        5.2.10.1
 )
 FetchContent_Declare(
   silvergun
