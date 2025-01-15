@@ -64,10 +64,12 @@ int main(int argc, char **argv) {
   /* ********************************* */
   /* Title screen handler - ESC exits demo - any other key starts game */
   slv::add_handler<slv::SCOPE_A, slv::EVENT_KEY_DOWN, slv::handler::key>([](const int& key, ALLEGRO_DISPLAY* display) {
+    #if !defined(__EMSCRIPTEN__)
     if (key == ALLEGRO_KEY_ESCAPE) {
-      //slv::stop_game();  //  Stop the game loop.
+      slv::stop_game();  //  Stop the game loop.
       return;
     }
+    #endif
 
     slv::engine::load_scene("game_scene");
   });

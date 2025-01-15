@@ -25,4 +25,4 @@ cp -r ${ASSETS_DIR}/shield.png ${BUILD_DIR}
 cp -r ${ASSETS_DIR}/shield.wav ${BUILD_DIR}
 cp -r ${ASSETS_DIR}/ship.png ${BUILD_DIR}
 cp -r ${ASSETS_DIR}/spawn_asteroids.sdf ${BUILD_DIR}
-cp -r ${ASSETS_DIR}/title.bmp ${BUILD_DIR}
+cp -r ${ASSETS_DIR}/title.png ${BUILD_DIR}
